@@ -22,7 +22,7 @@
 
         <dependency>
             <groupId>br.com.ismyburguer</groupId>
-            <artifactId>api-cliente</artifactId>
+            <artifactId>api-cliente-infra</artifactId>
             <version>${packing.version}</version>
         </dependency>
 

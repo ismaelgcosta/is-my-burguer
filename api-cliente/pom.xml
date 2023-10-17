@@ -11,12 +11,4 @@
 
     <artifactId>api-cliente</artifactId>
 
-    <dependencies>
-        <dependency>
-            <groupId>br.com.ismyburguer</groupId>
-            <artifactId>api-infra</artifactId>
-            <version>1.0.0-SNAPSHOT</version>
-        </dependency>
-    </dependencies>
-
 </project>

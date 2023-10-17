@@ -20,11 +20,14 @@
     <modules>
         <module>api-infra</module>
         <module>api-pedido</module>
+        <module>api-cliente/api-cliente-application</module>
+        <module>api-cliente/api-cliente-infra</module>
         <module>api-cliente</module>
         <module>api-pagamento</module>
         <module>api-promocao</module>
         <module>api-controle-pedido</module>
         <module>api-main-build</module>
+        <module>api-infra-persistence</module>
     </modules>
 
     <properties>
