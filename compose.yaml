@@ -1,0 +1,52 @@
+version: '3.8'
+
+services:
+  app:
+    build:
+        dockerfile: Dockerfile
+    depends_on:
+      - postgres
+      - mongodb
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres:5432/ismyburguer
+      - SPRING_DATASOURCE_USERNAME=ismyburguer
+      - SPRING_DATASOURCE_PASSWORD=ismyburguer
+      - SPRING_MONGO_DATASOURCE_URL=mongodb://ismyburguer:ismyburguer@mongodb:27017/ismyburguer?authSource=admin
+      - SPRING_MONGO_PASSWORD=ismyburguer
+      - SPRING_MONGO_USERNAME=ismyburguer
+    ports:
+      - '8088:8080'
+    networks:
+      - ismyburguer-backend
+  mongodb:
+    image: 'mongo:latest'
+    container_name: mongodb
+    volumes:
+      - mongodb:/data/db
+    environment:
+      - MONGO_INITDB_ROOT_PASSWORD=ismyburguer
+      - MONGO_INITDB_ROOT_USERNAME=ismyburguer
+    restart: on-failure
+    ports:
+      - '27017:27017'
+    networks:
+      - ismyburguer-backend
+  postgres:
+    image: 'postgres:latest'
+    container_name: postgres
+    ports:
+      - '5432:5432'
+    volumes:
+      - postgres:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_USER=ismyburguer
+      - POSTGRES_PASSWORD=ismyburguer
+    networks:
+      - ismyburguer-backend
+networks:
+  ismyburguer-backend:
+    external: false
+    driver: bridge
+volumes:
+  mongodb:
+  postgres:
