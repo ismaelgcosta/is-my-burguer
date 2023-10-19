@@ -19,15 +19,14 @@
 
     <modules>
         <module>api-infra</module>
+        <module>api-infra-persistence</module>
+        <module>api-infra-web</module>
         <module>api-pedido</module>
-        <module>api-cliente/api-cliente-application</module>
-        <module>api-cliente/api-cliente-infra</module>
         <module>api-cliente</module>
         <module>api-pagamento</module>
         <module>api-promocao</module>
         <module>api-controle-pedido</module>
         <module>api-main-build</module>
-        <module>api-infra-persistence</module>
     </modules>
 
     <properties>
@@ -42,6 +41,12 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.30</version>
         </dependency>
 
     </dependencies>

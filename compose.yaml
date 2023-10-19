@@ -5,24 +5,24 @@ services:
     build:
         dockerfile: Dockerfile
     depends_on:
-      - postgres
-      - mongodb
+      - postgres-ismyburguer
+      - mongodb-ismyburguer
     environment:
-      - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres:5432/ismyburguer
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres-ismyburguer:5432/ismyburguer
       - SPRING_DATASOURCE_USERNAME=ismyburguer
       - SPRING_DATASOURCE_PASSWORD=ismyburguer
-      - SPRING_MONGO_DATASOURCE_URL=mongodb://ismyburguer:ismyburguer@mongodb:27017/ismyburguer?authSource=admin
+      - SPRING_MONGO_DATASOURCE_URL=mongodb://ismyburguer:ismyburguer@mongodb-ismyburguer:27017/ismyburguer?authSource=admin
       - SPRING_MONGO_PASSWORD=ismyburguer
       - SPRING_MONGO_USERNAME=ismyburguer
     ports:
       - '8088:8080'
     networks:
       - ismyburguer-backend
-  mongodb:
+  mongodb-ismyburguer:
     image: 'mongo:latest'
-    container_name: mongodb
+    container_name: mongodb-ismyburguer
     volumes:
-      - mongodb:/data/db
+      - mongodb-ismyburguer:/data/db
     environment:
       - MONGO_INITDB_ROOT_PASSWORD=ismyburguer
       - MONGO_INITDB_ROOT_USERNAME=ismyburguer
@@ -31,13 +31,13 @@ services:
       - '27017:27017'
     networks:
       - ismyburguer-backend
-  postgres:
+  postgres-ismyburguer:
     image: 'postgres:latest'
-    container_name: postgres
+    container_name: postgres-ismyburguer
     ports:
       - '5432:5432'
     volumes:
-      - postgres:/var/lib/postgresql/data
+      - postgres-ismyburguer:/var/lib/postgresql/data
     environment:
       - POSTGRES_USER=ismyburguer
       - POSTGRES_PASSWORD=ismyburguer
@@ -48,5 +48,5 @@ networks:
     external: false
     driver: bridge
 volumes:
-  mongodb:
-  postgres:
+  mongodb-ismyburguer:
+  postgres-ismyburguer:

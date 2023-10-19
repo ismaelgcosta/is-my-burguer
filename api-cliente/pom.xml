@@ -10,5 +10,12 @@
     </parent>
 
     <artifactId>api-cliente</artifactId>
+    <packaging>pom</packaging>
+
+    <modules>
+        <module>api-cliente-application</module>
+        <module>api-cliente-adapters-out</module>
+        <module>api-cliente-adapters-in</module>
+    </modules>
 
 </project>

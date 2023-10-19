@@ -22,7 +22,19 @@
 
         <dependency>
             <groupId>br.com.ismyburguer</groupId>
-            <artifactId>api-cliente-infra</artifactId>
+            <artifactId>api-cliente-adapters-in</artifactId>
+            <version>${packing.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>br.com.ismyburguer</groupId>
+            <artifactId>api-cliente-adapters-out</artifactId>
+            <version>${packing.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>br.com.ismyburguer</groupId>
+            <artifactId>api-cliente-use-case</artifactId>
             <version>${packing.version}</version>
         </dependency>
 
