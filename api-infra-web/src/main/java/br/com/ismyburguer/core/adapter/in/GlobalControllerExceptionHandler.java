@@ -26,8 +26,8 @@ class GlobalControllerExceptionHandler extends ResponseEntityExceptionHandler {
     @ResponseStatus(HttpStatus.UNPROCESSABLE_ENTITY)  // 404
     @ExceptionHandler(ConstraintViolationException.class)
     ProblemDetail handleConstraintViolationException(ConstraintViolationException e) {
-        ProblemDetail problemDetail = ProblemDetail.forStatusAndDetail(HttpStatus.UNPROCESSABLE_ENTITY, e.getLocalizedMessage());
-        problemDetail.setTitle(e.getMessage());
+        ProblemDetail problemDetail = ProblemDetail.forStatus(HttpStatus.UNPROCESSABLE_ENTITY);
+        problemDetail.setTitle("Erro ao validar estrutura de dados");
 
         e.getConstraintViolations()
                 .forEach(constraintViolation -> {
