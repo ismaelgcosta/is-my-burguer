@@ -3,7 +3,7 @@ package br.com.ismyburguer.cliente.adapters.converter;
 import br.com.ismyburguer.cliente.adapters.entity.ClienteEntity;
 import br.com.ismyburguer.cliente.domain.model.Cliente;
 import br.com.ismyburguer.core.adapter.out.PersistenceConverter;
-import org.springframework.core.convert.converter.Converter;
+import br.com.ismyburguer.core.adapter.Converter;
 
 @PersistenceConverter
 public class ClienteEntityToClienteConverter implements Converter<ClienteEntity, Cliente> {

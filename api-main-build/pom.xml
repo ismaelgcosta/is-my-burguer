@@ -12,13 +12,16 @@
     <artifactId>api-main-build</artifactId>
 
     <properties>
-        <maven.compiler.source>20</maven.compiler.source>
-        <maven.compiler.target>20</maven.compiler.target>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <packing.version>1.0.0-SNAPSHOT</packing.version>
     </properties>
 
     <dependencies>
+
+        <dependency>
+            <groupId>br.com.ismyburguer</groupId>
+            <artifactId>api-infra</artifactId>
+            <version>${packing.version}</version>
+        </dependency>
 
         <dependency>
             <groupId>br.com.ismyburguer</groupId>
@@ -40,7 +43,55 @@
 
         <dependency>
             <groupId>br.com.ismyburguer</groupId>
-            <artifactId>api-pedido</artifactId>
+            <artifactId>api-produto-adapters-in</artifactId>
+            <version>${packing.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>br.com.ismyburguer</groupId>
+            <artifactId>api-produto-adapters-out</artifactId>
+            <version>${packing.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>br.com.ismyburguer</groupId>
+            <artifactId>api-produto-use-case</artifactId>
+            <version>${packing.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>br.com.ismyburguer</groupId>
+            <artifactId>api-pagamento-adapters-in</artifactId>
+            <version>${packing.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>br.com.ismyburguer</groupId>
+            <artifactId>api-pagamento-adapters-out</artifactId>
+            <version>${packing.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>br.com.ismyburguer</groupId>
+            <artifactId>api-pagamento-use-case</artifactId>
+            <version>${packing.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>br.com.ismyburguer</groupId>
+            <artifactId>api-pedido-adapters-in</artifactId>
+            <version>${packing.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>br.com.ismyburguer</groupId>
+            <artifactId>api-pedido-adapters-out</artifactId>
+            <version>${packing.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>br.com.ismyburguer</groupId>
+            <artifactId>api-pedido-use-case</artifactId>
             <version>${packing.version}</version>
         </dependency>
 
@@ -69,6 +120,21 @@
                     <addResources>true</addResources>
                 </configuration>
             </plugin>
+
+            <plugin>
+                <groupId>org.springdoc</groupId>
+                <artifactId>springdoc-openapi-maven-plugin</artifactId>
+                <version>1.4</version>
+                <executions>
+                    <execution>
+                        <phase>integration-test</phase>
+                        <goals>
+                            <goal>generate</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
         </plugins>
 
         <finalName>is-my-burger-app</finalName>

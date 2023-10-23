@@ -1,17 +1,16 @@
 package br.com.ismyburguer.cliente.adapters.web.controller;
 
-
 import br.com.ismyburguer.cliente.adapters.web.converter.CadastrarClienteRequestConverter;
 import br.com.ismyburguer.cliente.adapters.web.request.CriarClienteRequest;
 import br.com.ismyburguer.cliente.ports.in.CadastrarClienteUseCase;
+import br.com.ismyburguer.core.adapter.in.WebAdapter;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
 
 import java.util.UUID;
 
-@RestController
+@WebAdapter
 @RequestMapping("/clientes")
 public class CadastrarClienteController {
     private final CadastrarClienteUseCase cadastrarClienteUseCase;

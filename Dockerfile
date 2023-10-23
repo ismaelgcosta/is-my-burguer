@@ -1,4 +1,4 @@
-FROM eclipse-temurin
+FROM eclipse-temurin:20-jdk
 VOLUME /tmp
 
 COPY ./api-main-build/target/is-my-burger-app.jar is-my-burger-app.jar
