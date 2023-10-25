@@ -10,6 +10,7 @@ public class ProdutoEntityToProdutoConverter implements Converter<ProdutoEntity,
     @Override
     public Produto convert(ProdutoEntity source) {
         return new Produto(
+                new Produto.ProdutoId(source.getProdutoId()),
                 new Produto.Descricao(source.getDescricao()),
                 Produto.Categoria.valueOf(source.getCategoria().name()),
                 new Produto.Preco(source.getPreco())

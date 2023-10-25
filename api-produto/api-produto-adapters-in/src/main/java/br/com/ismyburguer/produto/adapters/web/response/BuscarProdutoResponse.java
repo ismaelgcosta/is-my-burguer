@@ -1,6 +1,5 @@
 package br.com.ismyburguer.produto.adapters.web.response;
 
-import br.com.ismyburguer.produto.domain.model.Produto;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

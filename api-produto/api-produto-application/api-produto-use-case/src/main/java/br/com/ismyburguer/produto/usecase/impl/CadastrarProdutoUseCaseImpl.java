@@ -1,9 +1,9 @@
 package br.com.ismyburguer.produto.usecase.impl;
 
+import br.com.ismyburguer.core.usecase.UseCase;
 import br.com.ismyburguer.produto.domain.model.Produto;
 import br.com.ismyburguer.produto.ports.in.CadastrarProdutoUseCase;
 import br.com.ismyburguer.produto.ports.out.CadastrarProdutoRepository;
-import br.com.ismyburguer.core.usecase.UseCase;
 
 import java.util.UUID;
 

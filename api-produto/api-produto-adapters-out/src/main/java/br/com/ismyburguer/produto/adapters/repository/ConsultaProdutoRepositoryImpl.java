@@ -1,10 +1,10 @@
 package br.com.ismyburguer.produto.adapters.repository;
 
+import br.com.ismyburguer.core.adapter.out.PersistenceAdapter;
 import br.com.ismyburguer.produto.adapters.converter.ProdutoEntityToProdutoConverter;
 import br.com.ismyburguer.produto.adapters.entity.ProdutoEntity;
 import br.com.ismyburguer.produto.domain.model.Produto;
 import br.com.ismyburguer.produto.ports.out.ConsultaProdutoRepository;
-import br.com.ismyburguer.core.adapter.out.PersistenceAdapter;
 
 import java.util.Optional;
 import java.util.UUID;
@@ -27,7 +27,8 @@ public class ConsultaProdutoRepositoryImpl implements ConsultaProdutoRepository 
     }
 
     @Override
-    public Optional<Produto> obterPeloEmail(String email) {
-        return Optional.empty();
+    public boolean existsById(UUID produtoId) {
+        return produtoRepository.existsById(produtoId);
     }
+
 }

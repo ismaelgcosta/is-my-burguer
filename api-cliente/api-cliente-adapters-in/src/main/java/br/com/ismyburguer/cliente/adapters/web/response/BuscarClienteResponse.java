@@ -10,6 +10,8 @@ import lombok.Setter;
 @Getter
 @Setter
 public class BuscarClienteResponse {
+
+    private String clienteId;
     private String nome;
     private String sobrenome;
     private String cpf;

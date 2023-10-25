@@ -7,5 +7,5 @@ import java.util.UUID;
 
 public interface ConsultaProdutoRepository {
     Optional<Produto> obterPeloProdutoId(UUID produtoId);
-    Optional<Produto> obterPeloEmail(String email);
+    boolean existsById(UUID produtoId);
 }

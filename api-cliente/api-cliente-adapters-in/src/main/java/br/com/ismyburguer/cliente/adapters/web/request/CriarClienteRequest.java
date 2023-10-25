@@ -1,7 +1,6 @@
 package br.com.ismyburguer.cliente.adapters.web.request;
 
-import br.com.ismyburguer.cliente.domain.model.Cliente;
-import lombok.AllArgsConstructor;
+import br.com.ismyburguer.core.validation.Validation;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -9,7 +8,7 @@ import java.util.Optional;
 
 @Getter
 @Setter
-public class CriarClienteRequest {
+public class CriarClienteRequest implements Validation {
 
     private String nome;
     private String sobrenome;

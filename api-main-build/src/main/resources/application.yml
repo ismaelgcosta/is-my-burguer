@@ -15,10 +15,17 @@ springdoc:
     groups-order: DESC
     operationsSorter: method
     disable-swagger-default-url: true
-    use-root-path: true
+    use-root-path: false
+    enable: false
   show-actuator: true
 
 spring:
+  # Quartz
+  quartz:
+    job-store-type: jdbc
+    jdbc:
+      initialize-schema: true
+  # Docker
   docker:
     compose:
       enabled: true
@@ -26,6 +33,9 @@ spring:
       ports:
         - '5005:5005'
         - '8088:8080'
+      volumes:
+        - postgres-ismyburguer:/var/lib/postgresql/data
+        - mongodb-ismyburguer:/data/db
   # Database
   datasource:
     driver-class-name: org.postgresql.Driver
@@ -36,11 +46,13 @@ spring:
   jpa:
     hibernate:
       ddl-auto: create # When you launch the application for the first time - switch "none" at "create"
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.CamelCaseToUnderscoresNamingStrategy
+        implicit-strategy: org.springframework.boot.orm.jpa.hibernate.SpringImplicitNamingStrategy
     show-sql: true
     database: postgresql
     database-platform: org.hibernate.dialect.PostgreSQLDialect
     open-in-view: false
-    generate-ddl: true
     properties:
       hibernate:
         default_schema: public

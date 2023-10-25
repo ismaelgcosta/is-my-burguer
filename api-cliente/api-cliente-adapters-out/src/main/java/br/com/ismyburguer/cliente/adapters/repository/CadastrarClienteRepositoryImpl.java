@@ -5,8 +5,6 @@ import br.com.ismyburguer.cliente.adapters.entity.ClienteEntity;
 import br.com.ismyburguer.cliente.domain.model.Cliente;
 import br.com.ismyburguer.cliente.ports.out.CadastrarClienteRepository;
 import br.com.ismyburguer.core.adapter.out.PersistenceAdapter;
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.NotNull;
 import org.springframework.validation.annotation.Validated;
 
 import java.util.UUID;

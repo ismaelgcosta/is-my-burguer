@@ -2,22 +2,23 @@ package br.com.ismyburguer.cliente.domain.model;
 
 import br.com.ismyburguer.core.validation.Validation;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.Email;
-import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.Value;
-import org.hibernate.validator.constraints.br.CPF;
-import org.hibernate.validator.internal.metadata.facets.Validatable;
-import org.springframework.validation.ValidationUtils;
-import org.springframework.validation.Validator;
+import lombok.Setter;
 
 import java.util.Optional;
+import java.util.UUID;
 
 @Getter
 @AllArgsConstructor
 public class Cliente implements Validation {
+
+    @Valid
+    @Setter
+    private ClienteId clienteId;
 
     @Valid
     private Nome nome;
@@ -27,8 +28,15 @@ public class Cliente implements Validation {
 
     @Valid
     private CPF cpf;
+
     public Cliente(Nome nome) {
         this.nome = nome;
+    }
+
+    public Cliente(Nome nome, Email email, CPF cpf) {
+        this.nome = nome;
+        this.email = email;
+        this.cpf = cpf;
     }
 
     @Getter
@@ -44,7 +52,7 @@ public class Cliente implements Validation {
     public static class Nome {
 
         @NotBlank(message = "Informe o campo nome")
-        @Min(value = 3, message = "O nome deve conter pelo menos 3 letras")
+        @Size(min = 3, message = "O nome deve conter pelo menos 3 letras")
         String nome;
 
         String sobrenome;
@@ -55,6 +63,15 @@ public class Cliente implements Validation {
 
         @org.hibernate.validator.constraints.br.CPF
         private String numero;
+
+    }
+
+    @Getter
+    @AllArgsConstructor
+    public static class ClienteId {
+
+        @NotNull(message = "Informe o código do Cliente")
+        private UUID clienteId;
 
     }
 

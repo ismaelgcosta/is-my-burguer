@@ -2,8 +2,8 @@ package br.com.ismyburguer.cliente.adapters.converter;
 
 import br.com.ismyburguer.cliente.adapters.entity.ClienteEntity;
 import br.com.ismyburguer.cliente.domain.model.Cliente;
-import br.com.ismyburguer.core.adapter.out.PersistenceConverter;
 import br.com.ismyburguer.core.adapter.Converter;
+import br.com.ismyburguer.core.adapter.out.PersistenceConverter;
 
 @PersistenceConverter
 public class ClienteToClienteEntityConverter implements Converter<Cliente, ClienteEntity> {
