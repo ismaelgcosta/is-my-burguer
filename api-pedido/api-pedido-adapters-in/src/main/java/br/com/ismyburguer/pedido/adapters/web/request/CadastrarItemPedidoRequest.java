@@ -6,6 +6,7 @@ import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.validator.constraints.UUID;
 
 import java.math.BigDecimal;
 import java.util.Optional;
@@ -15,6 +16,7 @@ import java.util.Optional;
 public class CadastrarItemPedidoRequest implements Validation {
 
     @NotNull(message = "Informe o código do Produto")
+    @UUID(message = "o id informado está num formato inválido")
     private String produtoId;
 
     @NotNull(message = "Informe a quantidade do item")

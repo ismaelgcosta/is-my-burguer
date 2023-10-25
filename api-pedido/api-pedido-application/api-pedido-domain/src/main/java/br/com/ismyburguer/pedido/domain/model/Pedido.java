@@ -5,6 +5,7 @@ import br.com.ismyburguer.core.validation.Validation;
 import jakarta.validation.constraints.DecimalMin;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
@@ -23,7 +24,7 @@ public class Pedido implements Validation {
 
     private StatusPedido statusPedido = StatusPedido.ABERTO;
 
-    @Min(value = 1, message = "É necessário informar ao menos um item no pedido")
+    @Size(min = 1, message = "É necessário informar ao menos um item no pedido")
     private final List<ItemPedido> itens;
 
     public Pedido(PedidoId pedidoId, List<ItemPedido> itens) {
@@ -78,6 +79,7 @@ public class Pedido implements Validation {
     public static class PedidoId {
 
         @NotNull(message = "Informe o código do Pedido")
+        @org.hibernate.validator.constraints.UUID(message = "o id informado está num formato inválido")
         private UUID pedidoId;
 
     }
@@ -87,6 +89,7 @@ public class Pedido implements Validation {
     public static class ClienteId {
 
         @NotNull(message = "Informe o código do Cliente")
+        @org.hibernate.validator.constraints.UUID(message = "o id informado está num formato inválido")
         private UUID clienteId;
 
     }

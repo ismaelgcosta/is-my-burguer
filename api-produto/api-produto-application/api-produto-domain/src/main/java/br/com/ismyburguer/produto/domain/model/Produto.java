@@ -44,6 +44,7 @@ public class Produto implements Validation {
     public static class ProdutoId {
 
         @NotNull(message = "Informe o código do Produto")
+        @org.hibernate.validator.constraints.UUID(message = "o id informado está num formato inválido")
         private UUID produtoId;
 
     }
