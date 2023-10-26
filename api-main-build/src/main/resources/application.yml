@@ -20,6 +20,8 @@ springdoc:
   show-actuator: true
 
 spring:
+  liquibase:
+    enabled: false
   # Quartz
   quartz:
     job-store-type: jdbc
@@ -45,7 +47,7 @@ spring:
   # JPA properties
   jpa:
     hibernate:
-      ddl-auto: create # When you launch the application for the first time - switch "none" at "create"
+      ddl-auto: none # When you launch the application for the first time - switch "none" at "create-drop"
       naming:
         physical-strategy: org.hibernate.boot.model.naming.CamelCaseToUnderscoresNamingStrategy
         implicit-strategy: org.springframework.boot.orm.jpa.hibernate.SpringImplicitNamingStrategy

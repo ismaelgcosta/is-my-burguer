@@ -26,7 +26,7 @@ public class BuscarPedidoConverter implements Converter<Pedido, BuscarPedidoResp
         }
 
         return new BuscarPedidoResponse(
-                source.getPedidoId().getPedidoId().toString(),
+                source.getPedidoId().map(Pedido.PedidoId::getPedidoId).map(String::valueOf).orElse(null),
                 source.getClienteId().map(Pedido.ClienteId::getClienteId).map(String::valueOf).orElse(null),
                 source.getItens()
                         .stream()

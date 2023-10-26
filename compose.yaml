@@ -33,11 +33,13 @@ services:
       - ismyburguer-backend
   postgres-ismyburguer:
     image: 'postgres:latest'
+    restart: unless-stopped
     container_name: postgres-ismyburguer
     ports:
       - '5432:5432'
     volumes:
       - postgres-ismyburguer:/var/lib/postgresql/data
+      - ./script-inicial.sql:/docker-entrypoint-initdb.d/init.sql
     environment:
       - POSTGRES_USER=ismyburguer
       - POSTGRES_PASSWORD=ismyburguer

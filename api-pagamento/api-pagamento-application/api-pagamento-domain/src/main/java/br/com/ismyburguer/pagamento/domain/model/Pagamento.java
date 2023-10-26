@@ -34,6 +34,10 @@ public class Pagamento implements Validation {
         this.total = total;
     }
 
+    public void pago() {
+        this.statusPagamento = StatusPagamento.PAGO;
+    }
+
     @Getter
     public enum StatusPagamento {
 

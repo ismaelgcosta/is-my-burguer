@@ -22,9 +22,8 @@ public class PagarPedidoController {
         this.converter = converter;
     }
 
-    @Operation(description = "Alterar Pedido")
+    @Operation(description = "Pagar Pedido")
     @PutMapping("/pagamento/{pedidoId}")
-    @ResponseStatus(HttpStatus.NO_CONTENT)
     public String pagarPedido(
             @PathVariable String pedidoId
     ) {

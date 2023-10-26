@@ -17,7 +17,6 @@ public class BuscarItemPedidoResponse implements Validation {
 
     private String itemPedidoId;
     private String produtoId;
-
     private Integer quantidade;
     private BigDecimal preco;
     private BigDecimal valorTotal;

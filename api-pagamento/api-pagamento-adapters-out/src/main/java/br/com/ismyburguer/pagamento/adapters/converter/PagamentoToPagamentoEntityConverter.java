@@ -17,6 +17,8 @@ public class PagamentoToPagamentoEntityConverter implements Converter<Pagamento,
                 StatusPagamentoEntity.valueOf(source.getStatusPagamento().name()),
                 TipoPagamentoEntity.valueOf(source.getTipoPagamento().name()),
                 FormaPagamentoEntity.valueOf(source.getFormaPagamento().name()),
-                source.getTotal().getValor());
+                source.getTotal().getValor(),
+                source.getQrCode()
+        );
     }
 }

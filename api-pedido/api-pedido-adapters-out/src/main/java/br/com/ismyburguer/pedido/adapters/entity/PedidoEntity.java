@@ -1,5 +1,6 @@
 package br.com.ismyburguer.pedido.adapters.entity;
 
+import br.com.ismyburguer.pedido.domain.model.Pedido;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -10,7 +11,7 @@ import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 import java.math.BigDecimal;
 import java.util.HashSet;
-import java.util.List;
+import java.util.Optional;
 import java.util.Set;
 import java.util.UUID;
 
@@ -23,12 +24,13 @@ import java.util.UUID;
 public class PedidoEntity {
 
     @Id
+    @Column(name = "pedido_id")
     private UUID pedidoId = UUID.randomUUID();
 
-    @Column(name = "cliente_id", columnDefinition = "character varying(255) references cliente(cliente_id)")
+    @Column(name = "cliente_id", columnDefinition = "uuid references cliente(cliente_id)")
     private UUID clienteId;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "pedido")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "pedido", fetch = FetchType.EAGER, orphanRemoval = true)
     private Set<ItemPedidoEntity> itens;
 
     @Enumerated(EnumType.STRING)
@@ -41,6 +43,16 @@ public class PedidoEntity {
         this.clienteId = clienteId;
         this.statusPedido = statusPedido;
         this.valorTotal = valorTotal;
+    }
+
+    public PedidoEntity(UUID clienteId, StatusPedidoEntity statusPedido, BigDecimal valorTotal) {
+        this.clienteId = clienteId;
+        this.statusPedido = statusPedido;
+        this.valorTotal = valorTotal;
+    }
+
+    public Optional<UUID> getClienteId() {
+        return Optional.ofNullable(clienteId);
     }
 
     @Override
@@ -57,8 +69,14 @@ public class PedidoEntity {
         return new HashCodeBuilder(17, 37).append(getPedidoId()).toHashCode();
     }
 
+    public void limparItens() {
+        itens = itens == null ? new HashSet<>() : itens;
+        itens.clear();
+    }
+
     public void addItem(ItemPedidoEntity item) {
         itens = itens == null ? new HashSet<>() : itens;
+        itens.add(item);
         itens.forEach(itemPedidoEntity -> itemPedidoEntity.setPedido(this));
     }
 }

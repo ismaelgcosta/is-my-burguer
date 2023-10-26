@@ -5,6 +5,8 @@ import br.com.ismyburguer.pedido.adapters.converter.PedidoEntityToPedidoConverte
 import br.com.ismyburguer.pedido.adapters.entity.PedidoEntity;
 import br.com.ismyburguer.pedido.domain.model.Pedido;
 import br.com.ismyburguer.pedido.ports.out.ConsultarPedidoRepository;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Optional;
 import java.util.UUID;
@@ -21,6 +23,7 @@ public class ConsultarPedidoRepositoryImpl implements ConsultarPedidoRepository 
     }
 
     @Override
+    @Transactional(propagation = Propagation.SUPPORTS)
     public Optional<Pedido> obterPeloPedidoId(UUID pedidoId) {
         Optional<PedidoEntity> pedidoEntity = pedidoRepository.findById(pedidoId);
         return pedidoEntity.map(converter::convert);

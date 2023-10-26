@@ -2,12 +2,13 @@ package br.com.ismyburguer.pedido.domain.model;
 
 
 import br.com.ismyburguer.core.validation.Validation;
+import jakarta.validation.Valid;
 import jakarta.validation.constraints.DecimalMin;
-import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.Setter;
 
 import java.math.BigDecimal;
 import java.util.List;
@@ -18,8 +19,10 @@ import java.util.UUID;
 @AllArgsConstructor
 public class Pedido implements Validation {
 
+    @Valid
     private PedidoId pedidoId;
 
+    @Valid
     private ClienteId clienteId;
 
     private StatusPedido statusPedido = StatusPedido.ABERTO;
@@ -122,5 +125,9 @@ public class Pedido implements Validation {
 
     public Optional<ClienteId> getClienteId() {
         return Optional.ofNullable(clienteId);
+    }
+
+    public Optional<PedidoId> getPedidoId() {
+        return Optional.ofNullable(pedidoId);
     }
 }

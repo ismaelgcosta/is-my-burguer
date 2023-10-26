@@ -18,6 +18,7 @@ public class EfetuarPagamentoUseCaseImpl implements EfetuarPagamentoUseCase {
     @Override
     public UUID pagar(@Valid Pagamento pagamento) {
         pagamento.validate();
+        pagamento.pago();
         pagamento.setQrCode("cTVhbGd4eHBzc3Bsd2UzdWZhb2doN3V1YnY3eXg4YjM3Nm8yYmpzaTZybjBtY3VqbzlnaTZ6Zm9jdTd3ZHJnazVzeXMyZWw5bDRwODQwcHF5Z2ozaDUyazB0cWtuZ252N2FiY2d3Z2Mxb2N1dTR5ZHQzY3k0emNnbW10ajV5dmY=");
         return repository.pagar(pagamento);
     }

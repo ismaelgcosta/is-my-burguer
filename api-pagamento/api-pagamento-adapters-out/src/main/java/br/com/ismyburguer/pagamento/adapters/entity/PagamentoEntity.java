@@ -27,7 +27,7 @@ public class PagamentoEntity {
     @Id
     private UUID pagamentoId = UUID.randomUUID();
 
-    @Column(name = "pedido_id", columnDefinition = "character varying(255) references pedido(pedido_id)")
+    @Column(name = "pedido_id", columnDefinition = "uuid references pedido(pedido_id)")
     private UUID pedidoId;
 
     @Enumerated(EnumType.STRING)
@@ -49,6 +49,15 @@ public class PagamentoEntity {
         this.tipoPagamento = tipoPagamento;
         this.formaPagamento = formaPagamento;
         this.valorTotal = valorTotal;
+    }
+
+    public PagamentoEntity(UUID pedidoId, StatusPagamentoEntity statusPagamento, TipoPagamentoEntity tipoPagamento, FormaPagamentoEntity formaPagamento, BigDecimal valorTotal, String qrCode) {
+        this.pedidoId = pedidoId;
+        this.statusPagamento = statusPagamento;
+        this.tipoPagamento = tipoPagamento;
+        this.formaPagamento = formaPagamento;
+        this.valorTotal = valorTotal;
+        this.qrCode = qrCode;
     }
 
     @Override

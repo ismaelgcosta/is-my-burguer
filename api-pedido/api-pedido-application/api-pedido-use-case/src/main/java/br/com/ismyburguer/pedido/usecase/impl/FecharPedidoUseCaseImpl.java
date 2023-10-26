@@ -9,11 +9,8 @@ import br.com.ismyburguer.pedido.ports.out.FecharPedidoRepository;
 @UseCase
 public class FecharPedidoUseCaseImpl implements FecharPedidoUseCase {
     private final FecharPedidoRepository repository;
-    private final ConsultarPedidoUseCase pedidoUseCase;
-
-    public FecharPedidoUseCaseImpl(FecharPedidoRepository repository, ConsultarPedidoUseCase pedidoUseCase) {
+    public FecharPedidoUseCaseImpl(FecharPedidoRepository repository) {
         this.repository = repository;
-        this.pedidoUseCase = pedidoUseCase;
     }
 
     @Override

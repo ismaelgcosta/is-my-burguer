@@ -17,7 +17,6 @@ public class ItemPedido implements Validation {
 
     private ItemPedidoId itemPedidoId;
 
-    @NotNull(message = "Informe o código do Pedido")
     private Pedido.PedidoId pedidoId;
 
     @NotNull(message = "Informe o código do Produto")

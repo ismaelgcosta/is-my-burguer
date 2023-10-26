@@ -28,7 +28,7 @@ public class AlterarPedidoRequestConverter implements Converter<AlterarPedidoReq
 
         return new Pedido(
                 source.getClienteId().map(UUID::fromString).map(Pedido.ClienteId::new).orElse(null),
-                Pedido.StatusPedido.valueOf(source.getStatusPedido()),
+                null,
                 source.getItens()
                         .stream()
                         .map(itemPedidoRequestConverter::convert)

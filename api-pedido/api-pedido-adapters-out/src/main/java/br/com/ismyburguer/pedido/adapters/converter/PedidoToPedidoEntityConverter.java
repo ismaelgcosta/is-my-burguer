@@ -18,11 +18,11 @@ public class PedidoToPedidoEntityConverter implements Converter<Pedido, PedidoEn
     @Override
     public PedidoEntity convert(Pedido source) {
         PedidoEntity pedidoEntity = new PedidoEntity(
-                source.getPedidoId().getPedidoId(),
                 source.getClienteId().map(Pedido.ClienteId::getClienteId).orElse(null),
                 StatusPedidoEntity.valueOf(source.getStatusPedido().name()),
                 source.getTotal().getValor()
         );
+        source.getPedidoId().map(Pedido.PedidoId::getPedidoId).ifPresent(pedidoEntity::setPedidoId);
 
         source.getItens()
                 .stream()

@@ -1,12 +1,14 @@
 package br.com.ismyburguer.pedido.adapters.entity;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
+import org.springframework.boot.sql.init.dependency.DependsOnDatabaseInitialization;
 
 import java.math.BigDecimal;
 import java.util.UUID;
@@ -27,16 +29,18 @@ public class ItemPedidoEntity {
     private UUID itemPedidoId = UUID.randomUUID();
 
     @ManyToOne
-    @JoinColumn(name = "pedido_id")
+    @JoinColumn(name = "pedido_id", referencedColumnName = "pedido_id", foreignKey = @ForeignKey(name = "fk_item_pedido_pedido"))
     private PedidoEntity pedido;
 
-    @Column(name = "produto_id", columnDefinition = "character varying(255) references produto(produto_id)")
+    @Column(name = "produto_id", columnDefinition = "uuid references produto(produto_id)")
     private UUID produtoId;
 
     private int quantidade;
 
+    @NotNull
     private BigDecimal preco;
 
+    @NotNull
     private BigDecimal valorTotal;
 
     public ItemPedidoEntity(UUID itemPedidoId, UUID produtoId, int quantidade, BigDecimal preco, BigDecimal valorTotal) {

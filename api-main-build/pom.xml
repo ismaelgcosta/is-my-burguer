@@ -95,6 +95,24 @@
             <version>${packing.version}</version>
         </dependency>
 
+<!--        <dependency>-->
+<!--            <groupId>br.com.ismyburguer</groupId>-->
+<!--            <artifactId>api-controle-pedido-adapters-in</artifactId>-->
+<!--            <version>${packing.version}</version>-->
+<!--        </dependency>-->
+
+<!--        <dependency>-->
+<!--            <groupId>br.com.ismyburguer</groupId>-->
+<!--            <artifactId>api-controle-pedido-adapters-out</artifactId>-->
+<!--            <version>${packing.version}</version>-->
+<!--        </dependency>-->
+
+<!--        <dependency>-->
+<!--            <groupId>br.com.ismyburguer</groupId>-->
+<!--            <artifactId>api-controle-pedido-use-case</artifactId>-->
+<!--            <version>${packing.version}</version>-->
+<!--        </dependency>-->
+
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-docker-compose</artifactId>
