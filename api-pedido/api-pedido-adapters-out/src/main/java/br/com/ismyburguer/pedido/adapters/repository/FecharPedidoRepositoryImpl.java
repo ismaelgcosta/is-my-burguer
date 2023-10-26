@@ -14,12 +14,9 @@ import java.util.UUID;
 @PersistenceAdapter
 public class FecharPedidoRepositoryImpl implements FecharPedidoRepository {
     private final PedidoRepository pedidoRepository;
-    private final PedidoToPedidoEntityConverter converter;
 
-    public FecharPedidoRepositoryImpl(PedidoRepository pedidoRepository,
-                                      PedidoToPedidoEntityConverter converter) {
+    public FecharPedidoRepositoryImpl(PedidoRepository pedidoRepository) {
         this.pedidoRepository = pedidoRepository;
-        this.converter = converter;
     }
 
     @Override

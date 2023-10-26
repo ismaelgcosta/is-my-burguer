@@ -25,6 +25,7 @@ public class PedidoEntity {
     @Id
     private UUID pedidoId = UUID.randomUUID();
 
+    @Column(name = "cliente_id", columnDefinition = "character varying(255) references cliente(cliente_id)")
     private UUID clienteId;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "pedido")

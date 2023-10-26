@@ -71,7 +71,6 @@ public class Cliente implements Validation {
     public static class ClienteId {
 
         @NotNull(message = "Informe o código do Cliente")
-        @org.hibernate.validator.constraints.UUID(message = "o id informado está num formato inválido")
         private UUID clienteId;
 
     }

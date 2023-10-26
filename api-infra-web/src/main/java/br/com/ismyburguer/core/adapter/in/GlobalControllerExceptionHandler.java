@@ -1,5 +1,6 @@
 package br.com.ismyburguer.core.adapter.in;
 
+import br.com.ismyburguer.core.exception.BusinessException;
 import br.com.ismyburguer.core.exception.EntityNotFoundException;
 import jakarta.validation.ConstraintViolation;
 import jakarta.validation.ConstraintViolationException;
@@ -27,7 +28,16 @@ class GlobalControllerExceptionHandler extends ResponseEntityExceptionHandler {
         return problemDetail;
     }
 
-    @ResponseStatus(HttpStatus.UNPROCESSABLE_ENTITY)  // 404
+    @ResponseStatus(HttpStatus.NOT_FOUND)  // 422
+    @ExceptionHandler(BusinessException.class)
+    ProblemDetail businessException(BusinessException e) {
+        ProblemDetail problemDetail = ProblemDetail.forStatusAndDetail(HttpStatus.NOT_FOUND, e.getLocalizedMessage());
+        problemDetail.setTitle(e.getMessage());
+        problemDetail.setProperty("timestamp", Instant.now());
+        return problemDetail;
+    }
+
+    @ResponseStatus(HttpStatus.UNPROCESSABLE_ENTITY)  // 422
     @ExceptionHandler(ConstraintViolationException.class)
     ProblemDetail handleConstraintViolationException(ConstraintViolationException e) {
         ProblemDetail problemDetail = ProblemDetail.forStatus(HttpStatus.UNPROCESSABLE_ENTITY);

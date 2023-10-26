@@ -30,7 +30,7 @@ public class ItemPedidoEntity {
     @JoinColumn(name = "pedido_id")
     private PedidoEntity pedido;
 
-    @Column(name = "produto_id")
+    @Column(name = "produto_id", columnDefinition = "character varying(255) references produto(produto_id)")
     private UUID produtoId;
 
     private int quantidade;

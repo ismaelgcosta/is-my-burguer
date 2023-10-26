@@ -47,12 +47,21 @@ public class Pedido implements Validation {
         this.itens = itens;
     }
 
+    public void alterarStatus(StatusPedido statusPedido) {
+        if(this.statusPedido != null) {
+            this.statusPedido.validarProximoStatus(statusPedido);
+        }
+        this.statusPedido = statusPedido;
+    }
+
     @Getter
     public enum StatusPedido {
 
         ABERTO("Aberto"),
         FECHADO("Fechado"),
         PAGO("Pago"),
+        AGUARDANDO_PAGAMENTO("Aguardando Pagamento"),
+        PAGAMENTO_NAO_AUTORIZADO("Pagamento Não Autorizado"),
         RECEBIDO("Recebido"),
         EM_PREPARACAO("Em Preparação"),
         PRONTO("Pronto"),
@@ -72,6 +81,10 @@ public class Pedido implements Validation {
         public String toString() {
             return descricao;
         }
+
+        public void validarProximoStatus(StatusPedido statusPedido) {
+
+        }
     }
 
     @Getter
@@ -79,7 +92,6 @@ public class Pedido implements Validation {
     public static class PedidoId {
 
         @NotNull(message = "Informe o código do Pedido")
-        @org.hibernate.validator.constraints.UUID(message = "o id informado está num formato inválido")
         private UUID pedidoId;
 
     }
@@ -89,7 +101,6 @@ public class Pedido implements Validation {
     public static class ClienteId {
 
         @NotNull(message = "Informe o código do Cliente")
-        @org.hibernate.validator.constraints.UUID(message = "o id informado está num formato inválido")
         private UUID clienteId;
 
     }
