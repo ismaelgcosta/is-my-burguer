@@ -26,7 +26,7 @@ public class CadastrarClienteController {
         this.cadastrarClienteRequestConverter = cadastrarClienteRequestConverter;
     }
 
-    @Operation(description = "Cadastrar Cliente")
+    @Operation(method = "Cadastrar Cliente", description = "Cadastrar Cliente")
     @PostMapping
     public UUID cadastrarCliente(@RequestBody CriarClienteRequest criarClienteRequest) {
         return cadastrarClienteUseCase.cadastrar(cadastrarClienteRequestConverter.convert(criarClienteRequest));

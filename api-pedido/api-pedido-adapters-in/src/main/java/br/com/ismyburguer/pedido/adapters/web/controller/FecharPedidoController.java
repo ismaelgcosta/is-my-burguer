@@ -27,7 +27,7 @@ public class FecharPedidoController {
     @Operation(description = "Fechar Pedido")
     @PutMapping("/{pedidoId}/fechamento")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void alterarPedido(
+    public void fecharPedido(
             @PathVariable @Valid @UUID(message = "O código do pedido informado está num formato inválido") String pedidoId
     ) {
         useCase.fechar(new Pedido.PedidoId(pedidoId));

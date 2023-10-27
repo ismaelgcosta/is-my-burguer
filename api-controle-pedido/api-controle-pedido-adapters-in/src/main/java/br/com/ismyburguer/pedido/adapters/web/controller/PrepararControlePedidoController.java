@@ -27,7 +27,7 @@ public class PrepararControlePedidoController {
     @Operation(description = "Preparar Pedido")
     @PutMapping("/{pedidoId}/em-preparacao")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void alterarPedido(
+    public void prepararPedido(
             @PathVariable @Valid @UUID(message = "O código do pedido informado está num formato inválido") String pedidoId
     ) {
         useCase.preparar(new ControlePedido.PedidoId(java.util.UUID.fromString(pedidoId)));

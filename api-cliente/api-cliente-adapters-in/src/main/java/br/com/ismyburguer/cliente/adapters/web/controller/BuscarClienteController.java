@@ -24,13 +24,13 @@ public class BuscarClienteController {
         this.buscarClienteConverter = buscarClienteConverter;
     }
 
-    @Operation(description = "Consultar Cliente por Email")
+    @Operation(method = "Consultar Cliente por Email", description = "Consultar Cliente por Email")
     @GetMapping("/email/{email}")
     public BuscarClienteResponse obterCliente(@PathVariable(name = "email") String email) {
         return buscarClienteConverter.convert(consultarClienteUseCase.buscar(new ConsultarClienteUseCase.ConsultaCliente(email)));
     }
 
-    @Operation(description = "Consultar Cliente por Email")
+    @Operation(method = "Consultar Cliente por Email", description = "Consultar Cliente por Email")
     @GetMapping("/{clienteId}")
     public BuscarClienteResponse obterClientePorId(@PathVariable(name = "clienteId") String clienteId) {
         return buscarClienteConverter.convert(consultarClienteUseCase.buscarPorId(new ConsultarClienteUseCase.ConsultaClientePorId(clienteId)));

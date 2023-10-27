@@ -25,7 +25,7 @@ public class FinalizarControlePedidoController {
         this.useCase = useCase;
     }
 
-    @Operation(description = "Pedido Pronto")
+    @Operation(method = "Pedido Pronto", description = "Pedido Pronto")
     @PutMapping("/{pedidoId}/pronto")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void pedidoPronto(

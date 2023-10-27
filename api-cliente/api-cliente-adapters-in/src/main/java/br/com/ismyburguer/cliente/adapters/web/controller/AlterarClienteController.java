@@ -25,7 +25,7 @@ public class AlterarClienteController {
         this.converter = converter;
     }
 
-    @Operation(description = "Alterar Cliente")
+    @Operation(method = "Alterar Cliente", description = "Alterar Cliente")
     @PutMapping("/{clienteId}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void alterarCliente(
