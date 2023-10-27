@@ -22,8 +22,8 @@ public class ConsultarControlePedidoRepositoryImpl implements ConsultarControleP
 
     @Override
     public Optional<ControlePedido> consultar(UUID pedidoId) {
-        Optional<ControlePedidoEntity> clienteEntity = controlePedidoRepository.findByPedidoId(pedidoId);
-        return clienteEntity.map(converter::convert);
+        Optional<ControlePedidoEntity> controlePedidoEntity = controlePedidoRepository.findByPedidoId(pedidoId);
+        return controlePedidoEntity.map(converter::convert);
     }
 
 }

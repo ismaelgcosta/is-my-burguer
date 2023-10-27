@@ -10,6 +10,7 @@ import lombok.Setter;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.Optional;
 import java.util.UUID;
 
 @Getter
@@ -45,13 +46,17 @@ public class ControlePedido implements Validation {
         statusControlePedido = proximo;
         fimDaPreparacao = LocalDateTime.now();
     }
+    public void retirado() {
+        statusControlePedido = StatusControlePedido.RETIRADO;
+    }
 
     @Getter
     public enum StatusControlePedido {
 
         RECEBIDO("Recebido"),
         EM_PREPARACAO("Em Preparação"),
-        PRONTO("Pronto");
+        PRONTO("Pronto"),
+        RETIRADO("Retirado");
 
         private final String descricao;
 
@@ -89,6 +94,9 @@ public class ControlePedido implements Validation {
         @NotNull(message = "Informe o código do Pedido")
         private UUID pedidoId;
 
+        public PedidoId(String pedidoId) {
+            this.pedidoId = UUID.fromString(pedidoId);
+        }
     }
 
     @Getter
@@ -100,4 +108,7 @@ public class ControlePedido implements Validation {
 
     }
 
+    public Optional<ControlePedidoId> getControlePedidoId() {
+        return Optional.ofNullable(controlePedidoId);
+    }
 }

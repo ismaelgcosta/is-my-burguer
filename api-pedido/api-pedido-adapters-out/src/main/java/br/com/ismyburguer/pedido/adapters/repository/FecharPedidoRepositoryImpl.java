@@ -20,10 +20,9 @@ public class FecharPedidoRepositoryImpl implements FecharPedidoRepository {
     }
 
     @Override
-    public void fecharPedido(String pedidoId) {
-        UUID uuid = UUID.fromString(pedidoId);
+    public void fecharPedido(UUID pedidoId) {
         PedidoEntity pedidoEntity = pedidoRepository
-                .findById(uuid)
+                .findById(pedidoId)
                 .orElseThrow(() -> new EntityNotFoundException("Pedido não foi encontrado"));
 
         pedidoEntity.setStatusPedido(StatusPedidoEntity.FECHADO);

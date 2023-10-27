@@ -21,7 +21,10 @@ public class ListarControlePedidoConverter implements Converter<ControlePedido, 
 
         return new ListarControlePedidoResponse(
                 source.getPedidoId().getPedidoId().toString(),
-                source.getStatusControlePedido().name()
+                source.getStatusControlePedido().name(),
+                source.getRecebidoEm(),
+                source.getInicioDaPreparacao(),
+                source.getFimDaPreparacao()
         );
     }
 }

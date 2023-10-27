@@ -36,6 +36,7 @@ public class PagarPedidoUseCaseImpl implements PagarPedidoUseCase {
     @Override
     public String pagar(Pedido.PedidoId pedidoId) {
         Pedido pedido = pedidoUseCase.buscarPorId(pedidoId);
+        alterarStatusPedidoUseCase.alterar(pedidoId, Pedido.StatusPedido.AGUARDANDO_PAGAMENTO);
 
         UUID uuid = pagamentoUseCase.pagar(new Pagamento(
                 new Pagamento.PedidoId(pedido.getPedidoId().get().getPedidoId()),
@@ -49,7 +50,7 @@ public class PagarPedidoUseCaseImpl implements PagarPedidoUseCase {
             case NAO_AUTORIZADO -> alterarStatusPedidoUseCase.alterar(pedidoId, Pedido.StatusPedido.PAGAMENTO_NAO_AUTORIZADO);
             case PAGO -> {
                 alterarStatusPedidoUseCase.alterar(pedidoId, Pedido.StatusPedido.PAGO);
-                gerarControlePedidoUseCase.receberPedido(new ControlePedido.PedidoId(uuid));
+                gerarControlePedidoUseCase.receberPedido(new ControlePedido.PedidoId(pedidoId.getPedidoId()));
             }
         }
         return pagamento.getQrCode();

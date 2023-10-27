@@ -5,9 +5,10 @@ import lombok.Getter;
 @Getter
 public enum StatusControlePedidoEntity {
 
-    AGUARDANDO_CONFIRMACAO("Aguardando Confirmação do ControlePedido"),
-    NAO_AUTORIZADO("Não Autorizado"),
-    PAGO("Pago");
+    RECEBIDO("Recebido"),
+    EM_PREPARACAO("Em Preparação"),
+    PRONTO("Pronto"),
+    RETIRADO("Retirado");
 
     private final String descricao;
 

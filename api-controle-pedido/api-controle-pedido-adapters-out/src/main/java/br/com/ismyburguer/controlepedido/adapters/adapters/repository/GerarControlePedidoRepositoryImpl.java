@@ -22,8 +22,8 @@ public class GerarControlePedidoRepositoryImpl implements GerarControlePedidoRep
     }
 
     @Override
-    public UUID gerar(ControlePedido controlepedido) {
-        ControlePedidoEntity controlepedidoEntity = converter.convert(controlepedido);
+    public UUID gerar(ControlePedido controlePedido) {
+        ControlePedidoEntity controlepedidoEntity = converter.convert(controlePedido);
         return controlepedidoRepository.save(controlepedidoEntity).getControlePedidoId();
     }
 }

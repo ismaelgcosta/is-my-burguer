@@ -5,6 +5,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.time.LocalDateTime;
+
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
@@ -13,5 +15,8 @@ public class ListarControlePedidoResponse {
 
     private String pedidoId;
     private String status;
+    private LocalDateTime recebidoEm;
+    private LocalDateTime inicioDaPreparacao;
+    private LocalDateTime fimDaPreparacao;
 
 }

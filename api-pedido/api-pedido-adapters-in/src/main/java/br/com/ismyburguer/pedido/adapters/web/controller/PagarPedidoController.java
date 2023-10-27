@@ -17,16 +17,13 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/pedidos")
 public class PagarPedidoController {
     private final PagarPedidoUseCase useCase;
-    private final AlterarPedidoRequestConverter converter;
 
-    public PagarPedidoController(PagarPedidoUseCase useCase,
-                                 AlterarPedidoRequestConverter converter) {
+    public PagarPedidoController(PagarPedidoUseCase useCase) {
         this.useCase = useCase;
-        this.converter = converter;
     }
 
     @Operation(description = "Pagar Pedido")
-    @PutMapping("/pagamento/{pedidoId}")
+    @PutMapping("/{pedidoId}/pagamento")
     public String pagarPedido(
             @PathVariable @Valid @UUID(message = "O código do pedido informado está num formato inválido") String pedidoId
     ) {

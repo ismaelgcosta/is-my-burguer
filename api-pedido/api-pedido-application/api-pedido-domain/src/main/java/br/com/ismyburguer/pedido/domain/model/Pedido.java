@@ -12,6 +12,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.math.BigDecimal;
+import java.text.MessageFormat;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
@@ -88,26 +89,26 @@ public class Pedido implements Validation {
         }
 
         public void validarProximoStatus(StatusPedido statusPedido) {
-            String message = "O Pedido precisa estar com o Status " + getDescricao() + " para poder ser alterado para " + statusPedido.getDescricao();
+            String message = "O Pedido precisa estar com o Status {0} para poder ser alterado para " + statusPedido.getDescricao();
 
             if(statusPedido == EM_PREPARACAO && this != RECEBIDO) {
-                throw new BusinessException(message);
+                throw new BusinessException(MessageFormat.format(message, RECEBIDO.getDescricao()));
             }
 
             if(statusPedido == FECHADO && this != ABERTO) {
-                throw new BusinessException(message);
+                throw new BusinessException(MessageFormat.format(message, ABERTO.getDescricao()));
             }
 
             if(statusPedido == PAGO && this != AGUARDANDO_PAGAMENTO && this != PAGAMENTO_NAO_AUTORIZADO) {
-                throw new BusinessException(message);
+                throw new BusinessException(MessageFormat.format(message, AGUARDANDO_PAGAMENTO.getDescricao() + " ou " + PAGAMENTO_NAO_AUTORIZADO.getDescricao()));
             }
 
             if(statusPedido == PRONTO && this != EM_PREPARACAO) {
-                throw new BusinessException(message);
+                throw new BusinessException(MessageFormat.format(message, EM_PREPARACAO.getDescricao()));
             }
 
             if(statusPedido == FINALIZADO && this != PRONTO) {
-                throw new BusinessException(message);
+                throw new BusinessException(MessageFormat.format(message, PRONTO.getDescricao()));
             }
         }
 

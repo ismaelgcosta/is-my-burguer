@@ -18,7 +18,7 @@ public class AlterarStatusPedidoUseCaseImpl implements AlterarStatusPedidoUseCas
     @Override
     public void alterar(Pedido.PedidoId pedidoId, Pedido.StatusPedido statusPedido) {
         Pedido pedido = consultarPedidoUseCase.buscarPorId(pedidoId);
-        statusPedido.validarProximoStatus(pedido.getStatusPedido());
+        pedido.alterarStatus(statusPedido);
         repository.alterar(pedidoId, statusPedido);
     }
 }

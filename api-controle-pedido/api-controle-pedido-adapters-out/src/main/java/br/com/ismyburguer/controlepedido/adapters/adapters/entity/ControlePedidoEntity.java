@@ -43,6 +43,13 @@ public class ControlePedidoEntity {
         this.recebidoEm = recebidoEm;
     }
 
+    public ControlePedidoEntity(UUID controlePedidoId, UUID pedidoId, StatusControlePedidoEntity statusControlePedido, LocalDateTime recebidoEm) {
+        this.controlePedidoId = controlePedidoId;
+        this.pedidoId = pedidoId;
+        this.statusControlePedido = statusControlePedido;
+        this.recebidoEm = recebidoEm;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
