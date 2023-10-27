@@ -22,9 +22,8 @@ public class AlterarStatusPedidoRepositoryImpl implements AlterarStatusPedidoRep
         this.pedidoRepository = pedidoRepository;
     }
 
-    public void alterar(String pedidoId, Pedido.StatusPedido statusPedido) {
-        UUID uuid = UUID.fromString(pedidoId);
-        Optional<PedidoEntity> entity = pedidoRepository.findById(uuid);
+    public void alterar(Pedido.PedidoId pedidoId, Pedido.StatusPedido statusPedido) {
+        Optional<PedidoEntity> entity = pedidoRepository.findById(pedidoId.getPedidoId());
         if(entity.isEmpty()) {
             throw new EntityNotFoundException("Pedido não foi encontrado");
         }

@@ -4,5 +4,5 @@ import br.com.ismyburguer.pedido.domain.model.Pedido;
 import jakarta.validation.Valid;
 
 public interface AlterarStatusPedidoRepository {
-    void alterar(String pedidoId, Pedido.StatusPedido statusPedido);
+    void alterar(Pedido.PedidoId pedidoId, Pedido.StatusPedido statusPedido);
 }

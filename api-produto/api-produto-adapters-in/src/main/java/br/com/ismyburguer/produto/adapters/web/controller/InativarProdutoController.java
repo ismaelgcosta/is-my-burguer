@@ -5,6 +5,8 @@ import br.com.ismyburguer.core.adapter.in.WebAdapter;
 import br.com.ismyburguer.produto.ports.in.InativarProdutoUseCase;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.validation.Valid;
+import org.hibernate.validator.constraints.UUID;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -25,7 +27,7 @@ public class InativarProdutoController {
     @DeleteMapping("/{produtoId}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void inativarProduto(
-            @PathVariable String produtoId
+            @PathVariable @Valid @UUID(message = "O código do produto informado está num formato inválido")String produtoId
     ) {
         useCase.inativar(produtoId);
     }

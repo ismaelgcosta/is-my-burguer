@@ -47,7 +47,7 @@ spring:
   # JPA properties
   jpa:
     hibernate:
-      ddl-auto: none # When you launch the application for the first time - switch "none" at "create-drop"
+      ddl-auto: none # When you launch the application for the first time - switch "none" at "create"
       naming:
         physical-strategy: org.hibernate.boot.model.naming.CamelCaseToUnderscoresNamingStrategy
         implicit-strategy: org.springframework.boot.orm.jpa.hibernate.SpringImplicitNamingStrategy

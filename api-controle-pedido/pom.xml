@@ -10,5 +10,19 @@
     </parent>
 
     <artifactId>api-controle-pedido</artifactId>
+    <packaging>pom</packaging>
+    <modules>
+        <module>api-controle-pedido-adapters-in</module>
+        <module>api-controle-pedido-adapters-out</module>
+        <module>api-controle-pedido-application</module>
+    </modules>
+
+    <dependencies>
+        <dependency>
+            <groupId>br.com.ismyburguer</groupId>
+            <artifactId>api-infra</artifactId>
+            <version>1.0.0-SNAPSHOT</version>
+        </dependency>
+    </dependencies>
 
 </project>

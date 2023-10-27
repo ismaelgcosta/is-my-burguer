@@ -18,8 +18,8 @@ public class ConsultarPedidoUseCaseImpl implements ConsultarPedidoUseCase {
     }
 
     @Override
-    public Pedido buscarPorId(ConsultaPedidoPorId query) {
-        return repository.obterPeloPedidoId(UUID.fromString(query.pedidoId()))
+    public Pedido buscarPorId(Pedido.PedidoId pedidoId) {
+        return repository.obterPeloPedidoId(pedidoId.getPedidoId())
                 .orElseThrow(() -> new EntityNotFoundException("Pedido não foi encontrado"));
     }
 }

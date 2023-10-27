@@ -1,6 +1,7 @@
 package br.com.ismyburguer.pedido.domain.model;
 
 
+import br.com.ismyburguer.core.exception.BusinessException;
 import br.com.ismyburguer.core.validation.Validation;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.DecimalMin;
@@ -11,6 +12,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.math.BigDecimal;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
@@ -62,8 +64,8 @@ public class Pedido implements Validation {
 
         ABERTO("Aberto"),
         FECHADO("Fechado"),
-        PAGO("Pago"),
         AGUARDANDO_PAGAMENTO("Aguardando Pagamento"),
+        PAGO("Pago"),
         PAGAMENTO_NAO_AUTORIZADO("Pagamento Não Autorizado"),
         RECEBIDO("Recebido"),
         EM_PREPARACAO("Em Preparação"),
@@ -86,8 +88,29 @@ public class Pedido implements Validation {
         }
 
         public void validarProximoStatus(StatusPedido statusPedido) {
+            String message = "O Pedido precisa estar com o Status " + getDescricao() + " para poder ser alterado para " + statusPedido.getDescricao();
 
+            if(statusPedido == EM_PREPARACAO && this != RECEBIDO) {
+                throw new BusinessException(message);
+            }
+
+            if(statusPedido == FECHADO && this != ABERTO) {
+                throw new BusinessException(message);
+            }
+
+            if(statusPedido == PAGO && this != AGUARDANDO_PAGAMENTO && this != PAGAMENTO_NAO_AUTORIZADO) {
+                throw new BusinessException(message);
+            }
+
+            if(statusPedido == PRONTO && this != EM_PREPARACAO) {
+                throw new BusinessException(message);
+            }
+
+            if(statusPedido == FINALIZADO && this != PRONTO) {
+                throw new BusinessException(message);
+            }
         }
+
     }
 
     @Getter
@@ -97,6 +120,9 @@ public class Pedido implements Validation {
         @NotNull(message = "Informe o código do Pedido")
         private UUID pedidoId;
 
+        public PedidoId(String pedidoId) {
+            this.pedidoId = UUID.fromString(pedidoId);
+        }
     }
 
     @Getter

@@ -7,5 +7,6 @@
     <include file="classpath:config/liquibase/changelog/init.sql" relativeToChangelogFile="false"/>
     <include file="classpath:config/liquibase/changelog/init-produtos.sql" relativeToChangelogFile="false"/>
     <include file="classpath:config/liquibase/changelog/init-pedidos.sql" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/init-controle-pedido.sql" relativeToChangelogFile="false"/>
 
 </databaseChangeLog>

@@ -5,6 +5,8 @@ import br.com.ismyburguer.core.adapter.in.WebAdapter;
 import br.com.ismyburguer.pedido.ports.in.FecharPedidoUseCase;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.validation.Valid;
+import org.hibernate.validator.constraints.UUID;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -25,7 +27,7 @@ public class FecharPedidoController {
     @PutMapping("/fechamento/{pedidoId}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void alterarPedido(
-            @PathVariable String pedidoId
+            @PathVariable @Valid @UUID(message = "O código do pedido informado está num formato inválido") String pedidoId
     ) {
         useCase.fechar(pedidoId);
     }

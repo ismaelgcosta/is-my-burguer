@@ -7,6 +7,8 @@ import br.com.ismyburguer.cliente.ports.in.AlterarClienteUseCase;
 import br.com.ismyburguer.core.adapter.in.WebAdapter;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.validation.Valid;
+import org.hibernate.validator.constraints.UUID;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
@@ -27,7 +29,7 @@ public class AlterarClienteController {
     @PutMapping("/{clienteId}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void alterarCliente(
-            @PathVariable String clienteId,
+            @PathVariable @Valid @UUID(message = "O código do cliente informado está num formato inválido") String clienteId,
             @RequestBody AlterarClienteRequest request
     ) {
         useCase.alterar(clienteId, converter.convert(request));

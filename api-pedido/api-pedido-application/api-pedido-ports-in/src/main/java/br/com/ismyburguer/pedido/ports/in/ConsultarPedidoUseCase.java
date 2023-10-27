@@ -4,9 +4,6 @@ import br.com.ismyburguer.pedido.domain.model.Pedido;
 
 public interface ConsultarPedidoUseCase {
 
-    Pedido buscarPorId(ConsultaPedidoPorId query);
+    Pedido buscarPorId(Pedido.PedidoId pedidoId);
 
-    record ConsultaPedidoPorId(String pedidoId) {
-
-    }
 }

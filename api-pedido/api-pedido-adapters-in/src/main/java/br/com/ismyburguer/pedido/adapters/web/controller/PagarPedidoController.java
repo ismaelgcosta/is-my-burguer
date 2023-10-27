@@ -3,9 +3,12 @@ package br.com.ismyburguer.pedido.adapters.web.controller;
 
 import br.com.ismyburguer.core.adapter.in.WebAdapter;
 import br.com.ismyburguer.pedido.adapters.web.converter.AlterarPedidoRequestConverter;
+import br.com.ismyburguer.pedido.domain.model.Pedido;
 import br.com.ismyburguer.pedido.ports.in.PagarPedidoUseCase;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.validation.Valid;
+import org.hibernate.validator.constraints.UUID;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
@@ -25,9 +28,9 @@ public class PagarPedidoController {
     @Operation(description = "Pagar Pedido")
     @PutMapping("/pagamento/{pedidoId}")
     public String pagarPedido(
-            @PathVariable String pedidoId
+            @PathVariable @Valid @UUID(message = "O código do pedido informado está num formato inválido") String pedidoId
     ) {
-        return useCase.pagar(pedidoId);
+        return useCase.pagar(new Pedido.PedidoId(pedidoId));
     }
 
 }
