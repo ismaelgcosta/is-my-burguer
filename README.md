@@ -1,83 +1,83 @@
-[//]: # (# Is My Burguer)
+# Is My Burguer
 
-[//]: # (Projeto para aplicação de conhecimentos da Fase 1 da Pós-Graduação em SOFTWARE ARCHITECTURE da FIAP)
+Projeto para aplicação de conhecimentos da Fase 1 da Pós-Graduação em SOFTWARE ARCHITECTURE da FIAP
 
-[//]: # ()
-[//]: # (# Arquitetura do Projeto)
 
-[//]: # ()
-[//]: # (Para modelagem da arquitetura do sistema foi utilizado o padrão de Ports and Adapters ou mais conhecido como Arquitetura Hexagonal. )
+# Arquitetura do Projeto
 
-[//]: # (Isso garante a manutenabilidade e testabilidade do sistema.)
 
-[//]: # ()
-[//]: # (Abaixo temos o desenho conceitual dessa arquitetura:)
+Para modelagem da arquitetura do sistema foi utilizado o padrão de Ports and Adapters ou mais conhecido como Arquitetura Hexagonal. 
 
-[//]: # ()
-[//]: # (![Hexagonal.jpg]&#40;docs%2Fimages%2FHexagonal.jpg&#41;)
+Isso garante a manutenabilidade e testabilidade do sistema.
 
-[//]: # ()
-[//]: # (# Organização dos Módulos:)
 
-[//]: # ()
-[//]: # (Para forçar que as camadas fossem respeitadas pelos desenvolvedores foram criados módulos para separação do código. )
+Abaixo temos o desenho conceitual dessa arquitetura:
 
-[//]: # (Essa separação será feita utilizando o framework de build de código [Maven]&#40;https://maven.apache.org/&#41;.)
 
-[//]: # ()
-[//]: # (Cada módulo representará um ou parte de um dos Contextos Delimitados encontrados na modelagem do domínio.)
+![Hexagonal.jpg](docs%2Fimages%2FHexagonal.jpg)
 
-[//]: # ()
-[//]: # (A separação dos módulos ficou da seguinte forma:)
 
-[//]: # ()
-[//]: # (![Modulos.png]&#40;docs%2Fimages%2FModulos.png&#41;)
+# Organização dos Módulos:
 
-[//]: # ()
-[//]: # (&#40;o sistema possui vários módulos, aqui estamos demonstrando apenas o contexto de cadastro de cliente&#41;)
 
-[//]: # ()
-[//]: # (Conforme comentado na imagem acima as portas oferecem apenas as interfaces tanto pra entrada quanto para saída dos dados. )
+Para forçar que as camadas fossem respeitadas pelos desenvolvedores foram criados módulos para separação do código. 
 
-[//]: # (Isso garante que todas as partes conheçam apenas o próprio domínio ou os domínios de outros módulos mas sem conseguirem chamar as implementações diretamente.)
+Essa separação será feita utilizando o framework de build de código [Maven](https://maven.apache.org/).
 
-[//]: # ()
-[//]: # (# Requisitos necessários para compilar o projeto)
 
-[//]: # ()
-[//]: # (Ter o docker instalado na sua máquina:)
+Cada módulo representará um ou parte de um dos Contextos Delimitados encontrados na modelagem do domínio.
 
-[//]: # ()
-[//]: # (* [Windows]&#40;https://docs.docker.com/windows/started&#41;)
 
-[//]: # (* [OS X]&#40;https://docs.docker.com/mac/started/&#41;)
+A separação dos módulos ficou da seguinte forma:
 
-[//]: # (* [Linux]&#40;https://docs.docker.com/linux/started/&#41;)
 
-[//]: # ()
-[//]: # (# Como fazer o build do projeto e da imagem)
+![Modulos.png](docs%2Fimages%2FModulos.png)
 
-[//]: # ()
-[//]: # (Na pasta raiz do projeto rodar o comando abaixo:)
 
-[//]: # ()
-[//]: # (```)
+(o sistema possui vários módulos, aqui estamos demonstrando apenas o contexto de cadastro de cliente)
 
-[//]: # (./mvnw install -U "&" docker compose up --build)
 
-[//]: # (```)
+Conforme comentado na imagem acima as portas oferecem apenas as interfaces tanto pra entrada quanto para saída dos dados. 
 
-[//]: # ()
-[//]: # (Existem duas formas de acessar a documentação das APIs da aplicação:)
+Isso garante que todas as partes conheçam apenas o próprio domínio ou os domínios de outros módulos mas sem conseguirem chamar as implementações diretamente.
 
-[//]: # ()
-[//]: # (# Swagger)
 
-[//]: # (http://localhost:8080/swagger-ui/index.html)
+# Requisitos necessários para compilar o projeto
 
-[//]: # ()
-[//]: # (# ReDoc)
 
-[//]: # (http://localhost:8080)
+Ter o docker instalado na sua máquina:
 
-[//]: # ()
+
+* [Windows](https://docs.docker.com/windows/started)
+
+* [OS X](https://docs.docker.com/mac/started/)
+
+* [Linux](https://docs.docker.com/linux/started/)
+
+
+# Como fazer o build do projeto e da imagem
+
+
+Na pasta raiz do projeto rodar o comando abaixo:
+
+
+```
+
+./mvnw install -U "&" docker compose up --build
+
+```
+
+
+Existem duas formas de acessar a documentação das APIs da aplicação:
+
+
+# Swagger
+
+http://localhost:8080/swagger-ui/index.html
+
+
+# ReDoc
+
+http://localhost:8080
+
+
