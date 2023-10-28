@@ -1,6 +1,9 @@
 logging.level.org.springframework.web: DEBUG
 logging.level.org.hibernate: ERROR
 
+server:
+  port: 8088
+
 management:
   endpoints:
     web:
@@ -28,6 +31,7 @@ spring:
     jdbc:
       initialize-schema: true
   # Docker
+  thread-executor: standard
   docker:
     compose:
       enabled: true

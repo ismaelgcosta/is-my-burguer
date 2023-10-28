@@ -1,4 +1,4 @@
-version: '3.8'
+version: '4.22'
 
 services:
   app:
@@ -15,7 +15,7 @@ services:
       - SPRING_MONGO_PASSWORD=ismyburguer
       - SPRING_MONGO_USERNAME=ismyburguer
     ports:
-      - '8088:8080'
+      - '8080:8080'
     networks:
       - ismyburguer-backend
   mongodb-ismyburguer:
