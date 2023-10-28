@@ -33,7 +33,6 @@ services:
       - ismyburguer-backend
   postgres-ismyburguer:
     image: 'postgres:latest'
-    restart: unless-stopped
     container_name: postgres-ismyburguer
     ports:
       - '5432:5432'
