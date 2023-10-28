@@ -1,0 +1,126 @@
+{
+	"info": {
+		"_postman_id": "5790b9a5-2ec8-4bb1-bcea-4a04fc85915b",
+		"name": "is-my-burger - Gerenciamento de Clientes",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "62471"
+	},
+	"item": [
+		{
+			"name": "Cadastrar Cliente",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"nome\": \"Fulano\",\r\n  \"sobrenome\": \"da Silva Sauro\",\r\n  \"email\": \"fulanodasilva@fulanodasilva.com\",\r\n  \"cpf\": \"12345678909\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:8080/clientes"
+			},
+			"response": []
+		},
+		{
+			"name": "Cadastrar Cliente Email Inválido",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nome\" : \"João\",\r\n    \"sobrenome\" : \" da Silva Sauro\",\r\n    \"email\" : \"joaodasilvasauro\",\r\n    \"cpf\" : \"12345678909\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:8080/clientes"
+			},
+			"response": []
+		},
+		{
+			"name": "Cadastrar Cliente CPF Inválido",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"nome\": \"Fulano\",\r\n  \"sobrenome\": \"da Silva Sauro\",\r\n  \"email\": \"fulanodasilva@fulanodasilva.com\",\r\n  \"cpf\": \"12345678901\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:8080/clientes"
+			},
+			"response": []
+		},
+		{
+			"name": "Obter Cliente por Email",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:8080/clientes/email/fulanodasilva@fulanodasilva.com",
+				"description": "Buscar cliente por email"
+			},
+			"response": []
+		},
+		{
+			"name": "Obter Cliente por Id",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:8080/clientes/cc50fba0-5a2f-42d8-abfb-4b86b20c0291",
+				"description": "Buscar cliente por email"
+			},
+			"response": []
+		},
+		{
+			"name": "Alterar Cliente",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"nome\": \"Fulano\",\r\n  \"sobrenome\": \"da Silva Sauro e Sauro\",\r\n  \"email\": \"fulanodasilva@fulanodasilva.com\",\r\n  \"cpf\": \"12345678901\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:8080/clientes/cc50fba0-5a2f-42d8-abfb-4b86b20c0291"
+			},
+			"response": []
+		}
+	]
+}

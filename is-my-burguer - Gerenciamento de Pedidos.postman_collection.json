@@ -1,0 +1,100 @@
+{
+	"info": {
+		"_postman_id": "43ce6fe3-a75c-4e8a-8f15-57a91139c6f1",
+		"name": "is-my-burguer - Gerenciamento de Pedidos",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "62471"
+	},
+	"item": [
+		{
+			"name": "Criar Lanche",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"descricao\": \"X-Tudão\",\r\n  \"categoria\": \"LANCHE\",\r\n  \"preco\": 15.50\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:8080/produtos"
+			},
+			"response": []
+		},
+		{
+			"name": "Criar Sobremesa",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"descricao\": \"Sunday de Morango\",\r\n  \"categoria\": \"SOBREMESA\",\r\n  \"preco\": 3.50\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:8080/produtos"
+			},
+			"response": []
+		},
+		{
+			"name": "Criar Bebida",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"descricao\": \"Energy Drink\",\r\n  \"categoria\": \"BEBIDA\",\r\n  \"preco\": 6.50\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:8080/produtos"
+			},
+			"response": []
+		},
+		{
+			"name": "Listar Lanches",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "http://localhost:8080/produtos/categorias/LANCHE"
+			},
+			"response": []
+		},
+		{
+			"name": "Listar Sobremesas",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "http://localhost:8080/produtos/categorias/SOBREMESA"
+			},
+			"response": []
+		},
+		{
+			"name": "Listar Bebidas",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "http://localhost:8080/produtos/categorias/BEBIDA"
+			},
+			"response": []
+		},
+		{
+			"name": "Obter Produto",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "http://localhost:8080/produtos/42fd4b15-4281-4476-8f27-fafac3a6a8d3"
+			},
+			"response": []
+		}
+	]
+}

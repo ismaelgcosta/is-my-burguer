@@ -1,0 +1,73 @@
+{
+	"info": {
+		"_postman_id": "342a34a1-1e10-4780-84da-4e6a876a4125",
+		"name": "is-my-burguer - Controle de Pedidos",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "62471"
+	},
+	"item": [
+		{
+			"name": "Consultar Fila de Pedidos",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "http://localhost:8080/controle-pedidos"
+			},
+			"response": []
+		},
+		{
+			"name": "Mover Pedido para Em Preparação",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"itens\": [\r\n    {\r\n        \"produtoId\": \"beab006c-6ab3-4c42-b526-10e686802771\",\r\n        \"descricao\": \"X-Tudão\",\r\n        \"quantidade\": 2,\r\n        \"preco\": 15.50\r\n    },\r\n    {\r\n        \"produtoId\": \"a1ca74a4-fdd5-4fcc-9ac9-0e35475e030e\",\r\n        \"descricao\": \"Energy Drink Uva\",\r\n        \"quantidade\": 10,\r\n        \"preco\": 5.50\r\n    },\r\n    {\r\n        \"produtoId\": \"550858dd-bf71-44fc-9eb0-dd38f22d079a\",\r\n        \"descricao\": \"Sunday de Morango\",\r\n        \"quantidade\": \"4\",\r\n        \"preco\": 3.50\r\n    }\r\n  ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:8080/controle-pedidos/dbdc211a-83a5-4944-b89e-f16ac7986708/em-preparacao"
+			},
+			"response": []
+		},
+		{
+			"name": "Mover Pedido para Pronto",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"itens\": [\r\n    {\r\n        \"produtoId\": \"beab006c-6ab3-4c42-b526-10e686802771\",\r\n        \"descricao\": \"X-Tudão\",\r\n        \"quantidade\": 2,\r\n        \"preco\": 15.50\r\n    },\r\n    {\r\n        \"produtoId\": \"a1ca74a4-fdd5-4fcc-9ac9-0e35475e030e\",\r\n        \"descricao\": \"Energy Drink Uva\",\r\n        \"quantidade\": 10,\r\n        \"preco\": 5.50\r\n    },\r\n    {\r\n        \"produtoId\": \"550858dd-bf71-44fc-9eb0-dd38f22d079a\",\r\n        \"descricao\": \"Sunday de Morango\",\r\n        \"quantidade\": \"4\",\r\n        \"preco\": 3.50\r\n    }\r\n  ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:8080/controle-pedidos/dbdc211a-83a5-4944-b89e-f16ac7986708/pronto"
+			},
+			"response": []
+		},
+		{
+			"name": "Retirar Pedido",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"itens\": [\r\n    {\r\n        \"produtoId\": \"beab006c-6ab3-4c42-b526-10e686802771\",\r\n        \"descricao\": \"X-Tudão\",\r\n        \"quantidade\": 2,\r\n        \"preco\": 15.50\r\n    },\r\n    {\r\n        \"produtoId\": \"a1ca74a4-fdd5-4fcc-9ac9-0e35475e030e\",\r\n        \"descricao\": \"Energy Drink Uva\",\r\n        \"quantidade\": 10,\r\n        \"preco\": 5.50\r\n    },\r\n    {\r\n        \"produtoId\": \"550858dd-bf71-44fc-9eb0-dd38f22d079a\",\r\n        \"descricao\": \"Sunday de Morango\",\r\n        \"quantidade\": \"4\",\r\n        \"preco\": 3.50\r\n    }\r\n  ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:8080/controle-pedidos/dbdc211a-83a5-4944-b89e-f16ac7986708/retirada"
+			},
+			"response": []
+		}
+	]
+}
