@@ -1,1 +1,7 @@
 theme: minima
+header_pages:
+  - readme.md
+  - cadastro-produto.md
+  - cadastro-cliente.md
+  - cadastro-pedido.md
+  - controle-pedido.md
