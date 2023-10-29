@@ -22,13 +22,13 @@ public class ConsultaProdutoRepositoryImpl implements ConsultaProdutoRepository 
 
     @Override
     public Optional<Produto> obterPeloProdutoId(UUID produtoId) {
-        Optional<ProdutoEntity> produtoEntity = produtoRepository.findById(produtoId);
+        Optional<ProdutoEntity> produtoEntity = produtoRepository.findByProdutoIdAndAtivo(produtoId, true);
         return produtoEntity.map(converter::convert);
     }
 
     @Override
     public boolean existsById(UUID produtoId) {
-        return produtoRepository.existsById(produtoId);
+        return produtoRepository.existsByProdutoIdAndAtivo(produtoId, true);
     }
 
 }

@@ -6,10 +6,15 @@ import br.com.ismyburguer.produto.adapters.entity.ProdutoEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 @PersistenceDriver
 public interface ProdutoRepository extends JpaRepository<ProdutoEntity, UUID> {
 
-    List<ProdutoEntity> findAllByCategoria(CategoriaEntity categoria);
+    List<ProdutoEntity> findAllByCategoriaAndAtivoIsTrue(CategoriaEntity categoria);
+
+    boolean existsByProdutoIdAndAtivo(UUID produtoId, boolean status);
+
+    Optional<ProdutoEntity> findByProdutoIdAndAtivo(UUID produtoId, boolean status);
 }

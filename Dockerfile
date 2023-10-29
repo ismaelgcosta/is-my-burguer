@@ -7,4 +7,4 @@ CMD ls ./
 EXPOSE 8080
 EXPOSE 8088
 
-ENTRYPOINT ["java","-jar","/is-my-burger-app.jar","--server.port=8080"]
+ENTRYPOINT ["java","-jar","/is-my-burger-app.jar","--server.port=8080","-Dspring.profiles.active=production"]

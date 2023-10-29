@@ -14,11 +14,9 @@ import java.util.Optional;
 public class PedidoValidator {
 
     private final DomainReferenceValidator validator;
-    private final ListarControlePedidoUseCase controlePedidoUseCase;
 
-    public PedidoValidator(DomainReferenceValidator validator, ListarControlePedidoUseCase controlePedidoUseCase) {
+    public PedidoValidator(DomainReferenceValidator validator) {
         this.validator = validator;
-        this.controlePedidoUseCase = controlePedidoUseCase;
     }
 
     public void validate(Pedido pedido) {

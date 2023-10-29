@@ -1,0 +1,36 @@
+services:
+  mongodb-ismyburguer:
+    image: 'mongo:latest'
+    container_name: mongodb-ismyburguer
+    volumes:
+      - mongodb-ismyburguer:/data/db
+    environment:
+      - MONGO_INITDB_ROOT_PASSWORD=ismyburguer
+      - MONGO_INITDB_ROOT_USERNAME=ismyburguer
+    restart: always
+    ports:
+      - '27017:27017'
+    networks:
+      - ismyburguer-backend
+  postgres-ismyburguer:
+    image: 'postgres:latest'
+    container_name: postgres-ismyburguer
+    restart: always
+    ports:
+      - '5432:5432'
+    volumes:
+      - postgres-ismyburguer:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_USER=ismyburguer
+      - POSTGRES_PASSWORD=ismyburguer
+    networks:
+      - ismyburguer-backend
+networks:
+  ismyburguer-backend:
+    external: false
+    driver: bridge
+volumes:
+  mongodb-ismyburguer:
+  postgres-ismyburguer:
+
+version: '4.22'

@@ -99,7 +99,7 @@
 						}
 					}
 				},
-				"url": "http://localhost:8080/clientes/cc50fba0-5a2f-42d8-abfb-4b86b20c0291",
+				"url": "http://localhost:8080/clientes/bd7977bc-ff7b-4793-a1c7-1bb38cec9f7b",
 				"description": "Buscar cliente por email"
 			},
 			"response": []
@@ -111,14 +111,14 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n  \"nome\": \"Fulano\",\r\n  \"sobrenome\": \"da Silva Sauro e Sauro\",\r\n  \"email\": \"fulanodasilva@fulanodasilva.com\",\r\n  \"cpf\": \"12345678901\"\r\n}",
+					"raw": "{\r\n  \"nome\": \"Fulano\",\r\n  \"sobrenome\": \"da Silva Sauro e Sauro\",\r\n  \"email\": \"fulano@fulanodasilva.com\",\r\n  \"cpf\": \"12345678909\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
 						}
 					}
 				},
-				"url": "http://localhost:8080/clientes/cc50fba0-5a2f-42d8-abfb-4b86b20c0291"
+				"url": "http://localhost:8080/clientes/bd7977bc-ff7b-4793-a1c7-1bb38cec9f7b"
 			},
 			"response": []
 		}

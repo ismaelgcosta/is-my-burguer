@@ -22,7 +22,7 @@ public class ListarProdutoRepositoryImpl implements ListarProdutoRepository {
     @Override
     public Collection<Produto> listarProdutosPorCategoria(Produto.Categoria categoria) {
         return produtoRepository
-                .findAllByCategoria(CategoriaEntity.valueOf(categoria.name()))
+                .findAllByCategoriaAndAtivoIsTrue(CategoriaEntity.valueOf(categoria.name()))
                 .stream()
                 .map(converter::convert)
                 .toList();
