@@ -13,7 +13,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n  \"descricao\": \"X-Tudão\",\r\n  \"categoria\": \"LANCHE\",\r\n  \"preco\": 15.50\r\n}",
+					"raw": "{\r\n  \"descricao\": \"X-Tudão 2.0\",\r\n  \"categoria\": \"LANCHE\",\r\n  \"preco\": 15.50\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -49,7 +49,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n  \"descricao\": \"Energy Drink\",\r\n  \"categoria\": \"BEBIDA\",\r\n  \"preco\": 6.50\r\n}",
+					"raw": "{\r\n  \"descricao\": \"Energy Drink Zero Açúcar\",\r\n  \"categoria\": \"BEBIDA\",\r\n  \"preco\": 6.50\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -57,6 +57,24 @@
 					}
 				},
 				"url": "http://localhost:8080/produtos"
+			},
+			"response": []
+		},
+		{
+			"name": "Alterar Produto",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"descricao\": \"Lanche Monstro Extra Bacon\",\r\n  \"categoria\": \"LANCHE\",\r\n  \"preco\": 17.50\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:8080/produtos/298d1869-2051-40d4-a103-02f1c73be0a6"
 			},
 			"response": []
 		},
@@ -92,7 +110,16 @@
 			"request": {
 				"method": "GET",
 				"header": [],
-				"url": "http://localhost:8080/produtos/42fd4b15-4281-4476-8f27-fafac3a6a8d3"
+				"url": "http://localhost:8080/produtos/298d1869-2051-40d4-a103-02f1c73be0a6"
+			},
+			"response": []
+		},
+		{
+			"name": "Inativar Produto",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": "http://localhost:8080/produtos/01ba2738-f74f-46f0-b86f-d75d7c5668b9"
 			},
 			"response": []
 		}
