@@ -29,7 +29,7 @@
 						}
 					}
 				},
-				"url": "http://localhost:8080/controle-pedidos/dbdc211a-83a5-4944-b89e-f16ac7986708/em-preparacao"
+				"url": "http://localhost:8080/controle-pedidos/b0f72cb4-3f9d-406e-92d7-a94fe7dce36a/em-preparacao"
 			},
 			"response": []
 		},
@@ -47,7 +47,7 @@
 						}
 					}
 				},
-				"url": "http://localhost:8080/controle-pedidos/dbdc211a-83a5-4944-b89e-f16ac7986708/pronto"
+				"url": "http://localhost:8080/controle-pedidos/b0f72cb4-3f9d-406e-92d7-a94fe7dce36a/pronto"
 			},
 			"response": []
 		},
@@ -65,7 +65,7 @@
 						}
 					}
 				},
-				"url": "http://localhost:8080/controle-pedidos/dbdc211a-83a5-4944-b89e-f16ac7986708/retirada"
+				"url": "http://localhost:8080/controle-pedidos/b0f72cb4-3f9d-406e-92d7-a94fe7dce36a/retirada"
 			},
 			"response": []
 		}

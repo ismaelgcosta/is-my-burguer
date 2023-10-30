@@ -21,7 +21,7 @@ springdoc:
 
 spring:
   liquibase:
-    enabled: false
+    enabled: true
   # Quartz
   quartz:
     job-store-type: jdbc

@@ -1,98 +1,119 @@
 {
 	"info": {
-		"_postman_id": "43ce6fe3-a75c-4e8a-8f15-57a91139c6f1",
+		"_postman_id": "44081088-a7ff-4b60-ad41-5bf87b6f93c9",
 		"name": "is-my-burguer - Gerenciamento de Pedidos",
 		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
 		"_exporter_id": "62471"
 	},
 	"item": [
 		{
-			"name": "Criar Lanche",
+			"name": "Criar Pedido Inválido",
 			"request": {
 				"method": "POST",
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n  \"descricao\": \"X-Tudão\",\r\n  \"categoria\": \"LANCHE\",\r\n  \"preco\": 15.50\r\n}",
+					"raw": "{\r\n  \"clienteId\": \"42fd4b15-4281-4476-8f27-fafac3a6a8d3\",\r\n  \"itens\": [\r\n    {\r\n      \"produtoId\": \"42fd4b15-4281-4476-8f27-fafac3a6a8d3\",\r\n      \"quantidade\": 1,\r\n      \"preco\": 0.01\r\n    }\r\n  ]\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
 						}
 					}
 				},
-				"url": "http://localhost:8080/produtos"
+				"url": "http://localhost:8080/pedidos"
 			},
 			"response": []
 		},
 		{
-			"name": "Criar Sobremesa",
+			"name": "Criar Pedido",
 			"request": {
 				"method": "POST",
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n  \"descricao\": \"Sunday de Morango\",\r\n  \"categoria\": \"SOBREMESA\",\r\n  \"preco\": 3.50\r\n}",
+					"raw": "{\r\n  \"itens\": [\r\n    {\r\n        \"produtoId\": \"beab006c-6ab3-4c42-b526-10e686802771\",\r\n        \"descricao\": \"X-Tudão\",\r\n        \"quantidade\": 2,\r\n        \"preco\": 15.50\r\n    },\r\n    {\r\n        \"produtoId\": \"a1ca74a4-fdd5-4fcc-9ac9-0e35475e030e\",\r\n        \"descricao\": \"Energy Drink Uva\",\r\n        \"quantidade\": 10,\r\n        \"preco\": 5.50\r\n    }\r\n  ]\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
 						}
 					}
 				},
-				"url": "http://localhost:8080/produtos"
+				"url": "http://localhost:8080/pedidos"
 			},
 			"response": []
 		},
 		{
-			"name": "Criar Bebida",
+			"name": "Alterar Pedido",
 			"request": {
-				"method": "POST",
+				"method": "PUT",
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n  \"descricao\": \"Energy Drink\",\r\n  \"categoria\": \"BEBIDA\",\r\n  \"preco\": 6.50\r\n}",
+					"raw": "{\r\n  \"itens\": [\r\n    {\r\n        \"produtoId\": \"beab006c-6ab3-4c42-b526-10e686802771\",\r\n        \"descricao\": \"X-Tudão\",\r\n        \"quantidade\": 2,\r\n        \"preco\": 15.50\r\n    },\r\n    {\r\n        \"produtoId\": \"a1ca74a4-fdd5-4fcc-9ac9-0e35475e030e\",\r\n        \"descricao\": \"Energy Drink Uva\",\r\n        \"quantidade\": 10,\r\n        \"preco\": 5.50\r\n    },\r\n    {\r\n        \"produtoId\": \"550858dd-bf71-44fc-9eb0-dd38f22d079a\",\r\n        \"descricao\": \"Sunday de Morango\",\r\n        \"quantidade\": \"4\",\r\n        \"preco\": 3.50\r\n    }\r\n  ]\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
 						}
 					}
 				},
-				"url": "http://localhost:8080/produtos"
+				"url": "http://localhost:8080/pedidos/b0f72cb4-3f9d-406e-92d7-a94fe7dce36a"
 			},
 			"response": []
 		},
 		{
-			"name": "Listar Lanches",
+			"name": "Obter Pedido",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
 			"request": {
 				"method": "GET",
 				"header": [],
-				"url": "http://localhost:8080/produtos/categorias/LANCHE"
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"itens\": [\r\n    {\r\n        \"produtoId\": \"beab006c-6ab3-4c42-b526-10e686802771\",\r\n        \"descricao\": \"X-Tudão\",\r\n        \"quantidade\": 2,\r\n        \"preco\": 15.50\r\n    },\r\n    {\r\n        \"produtoId\": \"a1ca74a4-fdd5-4fcc-9ac9-0e35475e030e\",\r\n        \"descricao\": \"Energy Drink Uva\",\r\n        \"quantidade\": 10,\r\n        \"preco\": 5.50\r\n    }\r\n  ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:8080/pedidos/b0f72cb4-3f9d-406e-92d7-a94fe7dce36a"
 			},
 			"response": []
 		},
 		{
-			"name": "Listar Sobremesas",
+			"name": "Fechar Pedido",
 			"request": {
-				"method": "GET",
+				"method": "PUT",
 				"header": [],
-				"url": "http://localhost:8080/produtos/categorias/SOBREMESA"
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"itens\": [\r\n    {\r\n        \"produtoId\": \"beab006c-6ab3-4c42-b526-10e686802771\",\r\n        \"descricao\": \"X-Tudão\",\r\n        \"quantidade\": 2,\r\n        \"preco\": 15.50\r\n    },\r\n    {\r\n        \"produtoId\": \"a1ca74a4-fdd5-4fcc-9ac9-0e35475e030e\",\r\n        \"descricao\": \"Energy Drink Uva\",\r\n        \"quantidade\": 10,\r\n        \"preco\": 5.50\r\n    },\r\n    {\r\n        \"produtoId\": \"550858dd-bf71-44fc-9eb0-dd38f22d079a\",\r\n        \"descricao\": \"Sunday de Morango\",\r\n        \"quantidade\": \"4\",\r\n        \"preco\": 3.50\r\n    }\r\n  ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:8080/pedidos/b0f72cb4-3f9d-406e-92d7-a94fe7dce36a/fechamento"
 			},
 			"response": []
 		},
 		{
-			"name": "Listar Bebidas",
+			"name": "Pagar Pedido",
 			"request": {
-				"method": "GET",
+				"method": "PUT",
 				"header": [],
-				"url": "http://localhost:8080/produtos/categorias/BEBIDA"
-			},
-			"response": []
-		},
-		{
-			"name": "Obter Produto",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": "http://localhost:8080/produtos/42fd4b15-4281-4476-8f27-fafac3a6a8d3"
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"itens\": [\r\n    {\r\n        \"produtoId\": \"beab006c-6ab3-4c42-b526-10e686802771\",\r\n        \"descricao\": \"X-Tudão\",\r\n        \"quantidade\": 2,\r\n        \"preco\": 15.50\r\n    },\r\n    {\r\n        \"produtoId\": \"a1ca74a4-fdd5-4fcc-9ac9-0e35475e030e\",\r\n        \"descricao\": \"Energy Drink Uva\",\r\n        \"quantidade\": 10,\r\n        \"preco\": 5.50\r\n    },\r\n    {\r\n        \"produtoId\": \"550858dd-bf71-44fc-9eb0-dd38f22d079a\",\r\n        \"descricao\": \"Sunday de Morango\",\r\n        \"quantidade\": \"4\",\r\n        \"preco\": 3.50\r\n    }\r\n  ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:8080/pedidos/b0f72cb4-3f9d-406e-92d7-a94fe7dce36a/pagamento"
 			},
 			"response": []
 		}

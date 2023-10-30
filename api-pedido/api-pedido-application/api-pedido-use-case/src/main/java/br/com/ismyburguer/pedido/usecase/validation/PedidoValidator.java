@@ -1,11 +1,11 @@
 package br.com.ismyburguer.pedido.usecase.validation;
 
 import br.com.ismyburguer.cliente.ports.in.ConsultarClienteUseCase;
-import br.com.ismyburguer.controlepedido.ports.in.ListarControlePedidoUseCase;
 import br.com.ismyburguer.core.exception.BusinessException;
 import br.com.ismyburguer.core.validation.DomainReferenceValidator;
 import br.com.ismyburguer.core.validation.Validator;
 import br.com.ismyburguer.pedido.domain.model.Pedido;
+import br.com.ismyburguer.pedido.ports.in.ConsultarPedidoUseCase;
 import br.com.ismyburguer.produto.ports.in.ConsultarProdutoUseCase;
 
 import java.util.Optional;
@@ -14,16 +14,21 @@ import java.util.Optional;
 public class PedidoValidator {
 
     private final DomainReferenceValidator validator;
+    private final ConsultarPedidoUseCase consultarPedidoUseCase;
 
-    public PedidoValidator(DomainReferenceValidator validator) {
+    public PedidoValidator(DomainReferenceValidator validator, ConsultarPedidoUseCase consultarPedidoUseCase) {
         this.validator = validator;
+        this.consultarPedidoUseCase = consultarPedidoUseCase;
     }
 
-    public void validate(Pedido pedido) {
+    public void validate(String pedidoId, Pedido pedido) {
         pedido.validate();
 
-        if(pedido.getStatusPedido() != Pedido.StatusPedido.ABERTO) {
-            throw new BusinessException("O Pedido não está mais aberto e não pode ser alterado");
+        if(pedidoId != null) {
+            Pedido pedidoExistente = consultarPedidoUseCase.buscarPorId(new Pedido.PedidoId(pedidoId));
+            if (pedidoExistente.getStatusPedido() != Pedido.StatusPedido.ABERTO) {
+                throw new BusinessException("O Pedido não está mais aberto e não pode ser alterado");
+            }
         }
 
         Optional<Pedido.ClienteId> clienteId = pedido.getClienteId();

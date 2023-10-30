@@ -23,7 +23,7 @@ public class AlterarPedidoUseCaseImpl implements AlterarPedidoUseCase {
 
     @Override
     public void alterar(String pedidoId, @Valid Pedido pedido) {
-        validator.validate(pedido);
+        validator.validate(pedidoId, pedido);
         repository.alterarPedido(pedidoId, pedido);
     }
 }

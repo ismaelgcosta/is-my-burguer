@@ -21,7 +21,7 @@ public class CadastrarPedidoUseCaseImpl implements CadastrarPedidoUseCase {
 
     @Override
     public UUID cadastrar(@Valid Pedido pedido) {
-        validator.validate(pedido);
+        validator.validate(null, pedido);
         return repository.salvarPedido(pedido);
     }
 }
