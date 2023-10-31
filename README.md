@@ -14,6 +14,10 @@ Ter o docker instalado na sua máquina:
 
 * [Linux](https://docs.docker.com/linux/started/)
 
+Ter o Java 20 instalado na sua máquina:
+
+[JDK 20](https://jdk.java.net/java-se-ri/20)
+
 
 # Como fazer o build do projeto e da imagem
 
