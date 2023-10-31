@@ -24,10 +24,17 @@ Ter o Java 20 instalado na sua máquina:
 
 Na pasta raiz do projeto rodar o comando abaixo:
 
+## Windows
 
 ```
 
 ./mvnw install -U "&" docker compose up --build
+
+```
+## Linux
+```
+
+./mvnw install -U & docker compose up --build
 
 ```
 
