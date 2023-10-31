@@ -34,7 +34,7 @@ Na pasta raiz do projeto rodar o comando abaixo:
 ## Linux
 ```
 
-./mvnw install -U & docker compose up --build
+/bin/bash docker-build.sh
 
 ```
 
