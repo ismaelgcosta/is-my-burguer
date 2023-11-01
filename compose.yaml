@@ -16,7 +16,7 @@ services:
       - SPRING_MONGO_PASSWORD=ismyburguer
       - SPRING_MONGO_USERNAME=ismyburguer
     ports:
-      - '8080:8080'
+      - '127.0.0.1:8080:8080'
     networks:
       - ismyburguer-backend
 
