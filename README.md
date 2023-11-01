@@ -28,7 +28,7 @@ Na pasta raiz do projeto rodar o comando abaixo:
 
 ```
 
-./mvnw install -U "&" docker compose up --build
+./mvnw install -U "&" docker compose build "&" docker compose up
 
 ```
 ## Linux
