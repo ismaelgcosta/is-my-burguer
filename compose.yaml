@@ -19,5 +19,3 @@ services:
       - '127.0.0.1:8080:8080'
     networks:
       - ismyburguer-backend
-
-version: '4.22'

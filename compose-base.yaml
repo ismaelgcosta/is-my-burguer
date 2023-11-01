@@ -32,5 +32,3 @@ networks:
 volumes:
   mongodb-ismyburguer:
   postgres-ismyburguer:
-
-version: '4.22'

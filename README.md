@@ -14,16 +14,27 @@ Ter o docker instalado na sua máquina:
 
 * [Linux](https://docs.docker.com/linux/started/)
 
+Ter o Java 20 instalado na sua máquina:
+
+[JDK 20](https://jdk.java.net/java-se-ri/20)
+
 
 # Como fazer o build do projeto e da imagem
 
 
 Na pasta raiz do projeto rodar o comando abaixo:
 
+## Windows
 
 ```
 
 ./mvnw install -U "&" docker compose up --build
+
+```
+## Linux
+```
+
+/bin/bash docker-build.sh
 
 ```
 
