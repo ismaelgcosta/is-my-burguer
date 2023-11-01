@@ -5,7 +5,7 @@ services:
   app:
     build:
         dockerfile: Dockerfile
-    depends_on:
+    links:
       - postgres-ismyburguer
       - mongodb-ismyburguer
     environment:
