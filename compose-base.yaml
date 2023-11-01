@@ -7,17 +7,17 @@ services:
     environment:
       - MONGO_INITDB_ROOT_PASSWORD=ismyburguer
       - MONGO_INITDB_ROOT_USERNAME=ismyburguer
-    restart: on-failure
+    restart: always
     ports:
-      - '27017:27017'
+      - '127.0.0.1:27017:27017'
     networks:
       - ismyburguer-backend
   postgres-ismyburguer:
     image: 'postgres:latest'
     container_name: postgres-ismyburguer
-    restart: on-failure
+    restart: always
     ports:
-      - '5432:5432'
+      - '127.0.0.1:5432:5432'
     volumes:
       - postgres-ismyburguer:/var/lib/postgresql/data
     environment:
@@ -27,10 +27,8 @@ services:
       - ismyburguer-backend
 networks:
   ismyburguer-backend:
-    external: true
+    external: false
     driver: bridge
 volumes:
   mongodb-ismyburguer:
   postgres-ismyburguer:
-
-version: '4.22'
