@@ -2,21 +2,21 @@ include:
   - 'compose-base.yaml'
 
 services:
-  app:
+  is-my-burger-api:
+    container_name: is-my-burger-api
+    image: docker.io/ismaelgcosta/is-my-burguer-app:is-my-burguer-api-1.0.9
     build:
         dockerfile: Dockerfile
     links:
       - postgres-ismyburguer
       - mongodb-ismyburguer
-    environment:
-      - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres-ismyburguer:5432/ismyburguer
-      - SPRING_DATASOURCE_USERNAME=ismyburguer
-      - SPRING_DATASOURCE_PASSWORD=ismyburguer
-      - SPRING_MONGO_DATASOURCE_URL=mongodb://ismyburguer:ismyburguer@mongodb-ismyburguer:27017/ismyburguer?authSource=admin
-      - SPRING_MONGO_PASSWORD=ismyburguer
-      - SPRING_MONGO_USERNAME=ismyburguer
+#    environment:
+#      - POSTGRES_USER
+#      - POSTGRES_PASSWORD
+#      - MONGO_PASSWORD
+#      - MONGO_USERNAME
     ports:
-      - '127.0.0.1:8080:8080'
-    restart: always
+      - '127.0.0.1:8081:8080'
+    restart: unless-stopped
     networks:
       - ismyburguer-backend

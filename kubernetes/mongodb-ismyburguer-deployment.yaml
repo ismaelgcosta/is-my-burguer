@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+  labels:
+    name: mongodb-ismyburguer
+  name: mongodb-ismyburguer
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name: mongodb-ismyburguer
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        name: mongodb-ismyburguer
+    spec:
+      containers:
+        - env:
+            - name: MONGO_INITDB_ROOT_PASSWORD
+              value: ismyburguer
+            - name: MONGO_INITDB_ROOT_USERNAME
+              value: ismyburguer
+          image: mongo:latest
+          name: mongodb-ismyburguer
+          ports:
+            - containerPort: 27017
+              hostPort: 27018
+          volumeMounts:
+            - mountPath: /data/db
+              name: mongodb-ismyburguer
+      restartPolicy: Always
+      volumes:
+        - name: mongodb-ismyburguer
+          persistentVolumeClaim:
+            claimName: mongodb-ismyburguer
+status: {}

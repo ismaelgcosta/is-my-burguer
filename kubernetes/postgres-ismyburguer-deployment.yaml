@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    name: postgres-ismyburguer
+  name: postgres-ismyburguer
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name: postgres-ismyburguer
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        name: postgres-ismyburguer
+    spec:
+      containers:
+        - env:
+            - name: POSTGRES_PASSWORD
+              value: ismyburguer
+            - name: POSTGRES_USER
+              value: ismyburguer
+          image: postgres:latest
+          name: postgres-ismyburguer
+          ports:
+            - hostPort: 5433
+              containerPort: 5432
+          volumeMounts:
+            - mountPath: /var/lib/postgresql/data
+              name: postgres-ismyburguer
+      restartPolicy: Always
+      volumes:
+        - name: postgres-ismyburguer
+          persistentVolumeClaim:
+            claimName: postgres-ismyburguer
+status: {}

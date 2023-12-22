@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    name: is-my-burger-api
+  name: is-my-burger-api
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      name: is-my-burger-api
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        name: is-my-burger-api
+    spec:
+      containers:
+        - name: is-my-burger-api
+          resources:
+            limits:
+              cpu: "2"
+              memory: "512Mi"
+          env:
+            - name: POSTGRES_PASSWORD
+              value: ismyburguer
+            - name: POSTGRES_USER
+              value: ismyburguer
+            - name: MONGO_PASSWORD
+              value: ismyburguer
+            - name: MONGO_USERNAME
+              value: ismyburguer
+          image: docker.io/ismaelgcosta/is-my-burguer-app:is-my-burguer-api-1.0.8
+          ports:
+            - containerPort: 8080
+      restartPolicy: Always
+status: {}

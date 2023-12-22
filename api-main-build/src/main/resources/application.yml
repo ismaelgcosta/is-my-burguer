@@ -15,9 +15,13 @@ springdoc:
     groups-order: DESC
     operationsSorter: method
     disable-swagger-default-url: true
-    use-root-path: false
-    enable: false
+    use-root-path: true
+    show-actuator: true
   show-actuator: true
+  cache:
+    disabled: true
+server:
+  forward-headers-strategy: framework
 
 spring:
   liquibase:
@@ -38,19 +42,12 @@ spring:
       volumes:
         - postgres-ismyburguer:/var/lib/postgresql/data
         - mongodb-ismyburguer:/data/db
-      environment:
-        - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres-ismyburguer:5432/ismyburguer
-        - SPRING_DATASOURCE_USERNAME=ismyburguer
-        - SPRING_DATASOURCE_PASSWORD=ismyburguer
-        - SPRING_MONGO_DATASOURCE_URL=mongodb://ismyburguer:ismyburguer@mongodb-ismyburguer:27017/ismyburguer?authSource=admin
-        - SPRING_MONGO_PASSWORD=ismyburguer
-        - SPRING_MONGO_USERNAME=ismyburguer
   # Database
   datasource:
     driver-class-name: org.postgresql.Driver
-    url: ${SPRING_DATASOURCE_URL}
-    username: ${SPRING_DATASOURCE_USERNAME}
-    password: ${SPRING_DATASOURCE_PASSWORD}
+    url: jdbc:postgresql://postgres-ismyburguer:5433/ismyburguer
+    username: ${POSTGRES_USER}
+    password: ${POSTGRES_PASSWORD}
   # JPA properties
   jpa:
     hibernate:
@@ -69,6 +66,6 @@ spring:
   data:
     # MONGODB properties
     mongodb:
-      user: ${SPRING_MONGO_USERNAME}
-      password: ${SPRING_MONGO_PASSWORD}
-      uri: ${SPRING_MONGO_DATASOURCE_URL}
+      user: ${MONGO_USERNAME}
+      password: ${MONGO_PASSWORD}
+      uri: mongodb://${MONGO_USERNAME}:${MONGO_PASSWORD}@mongodb-ismyburguer:27018/ismyburguer?authSource=admin

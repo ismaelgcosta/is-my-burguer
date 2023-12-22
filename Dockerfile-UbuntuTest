@@ -1,0 +1,29 @@
+FROM maven:3.9.5-eclipse-temurin-21-alpine as build
+#
+WORKDIR /is-my-burguer
+#
+COPY ./ ./
+RUN mvn install
+
+
+ENV POSTGRES_USER="uri"
+ENV POSTGRES_PASSWORD="uri"
+ENV MONGO_PASSWORD="uri"
+ENV MONGO_USERNAME="uri"
+FROM ubuntu
+EXPOSE 8080
+EXPOSE 8081
+EXPOSE 5005
+
+RUN apt-get update
+RUN apt-get -y install curl
+RUN apt-get -y install zip
+RUN apt-get -y install unzip
+RUN curl -s "https://get.sdkman.io" | bash
+RUN bash "$HOME/.sdkman/bin/sdkman-init.sh"
+RUN sdk install java 21.0.1-amzn
+
+COPY --from=build /is-my-burguer/api-main-build/target/is-my-burger-app.jar is-my-burger-app.jar
+
+#ENTRYPOINT ["java","-jar","is-my-burger-app.jar","--server.port=8080","-Dspring.profiles.active=production"]
+CMD ["sleep","infinity"]

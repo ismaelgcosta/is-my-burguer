@@ -1,10 +1,20 @@
-FROM eclipse-temurin:20-jdk
-VOLUME /tmp
+FROM maven:3.9.5-eclipse-temurin-21-alpine as build
+#
+WORKDIR /is-my-burguer
+#
+COPY ./ ./
+RUN mvn install
 
-COPY ./api-main-build/target/is-my-burger-app.jar is-my-burger-app.jar
-CMD ls ./
-
+ENV POSTGRES_USER="uri"
+ENV POSTGRES_PASSWORD="uri"
+ENV MONGO_PASSWORD="uri"
+ENV MONGO_USERNAME="uri"
+FROM eclipse-temurin:21-jdk-alpine as main
 EXPOSE 8080
-EXPOSE 8088
+EXPOSE 8081
+EXPOSE 5005
 
-ENTRYPOINT ["java","-jar","/is-my-burger-app.jar","--server.port=8080","-Dspring.profiles.active=production"]
+COPY --from=build /is-my-burguer/api-main-build/target/is-my-burger-app.jar is-my-burger-app.jar
+
+ENTRYPOINT ["java","-jar","is-my-burger-app.jar","--server.port=8080","-Dspring.profiles.active=production"]
+#CMD ["sleep","infinity"]
